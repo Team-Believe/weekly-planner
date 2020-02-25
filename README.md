@@ -10,3 +10,15 @@ What is the minimum required for you to present on your demo day?
 We have a calendar page where users can add an event from a drop down and that event to the selected day of the week. This will be displayed on the selected day.
 
 - User stories https://trello.com/b/7Xz1xmbl/weekly-planner
+
+## 2/24
+
+- Completed software requirement documents. 
+
+- Added js,css,gitiginore,eslintrc.json folders/files for initial scaffold
+
+- Complete initial proof of concept.
+
+- Added local storage information to the data flow chart.
+
+- Had intial stand-up with Instructor and TA.
