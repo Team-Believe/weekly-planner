@@ -1,50 +1,65 @@
-## Software Requirements
+## **Software Requirements**
 
-What is the vision of this product?
+**What is the vision of the product?**
 
-What pain point does this project solve?
+The vision of the product is to plan out daily task for a seven day period, this allows for a more balanced, fulfilling lifestyle.
 
-Why should we care about your product?
+**What pain point does this project solve?** 
 
-Scope (In/Out)
-IN - What will your product do
-Describe the individual features that your product will do.
-High overview of each. Only need to list 4-5
-Example:
-The web app will provide information to the users about all the different Cat Cafe’s in the area
-The web app will provide both walking and driving directions to each of the destinations
-Users will be able to “Star” their favorite shops.
-Each shop will contain reviews of the customer’s experiences
-OUT - What will your product not do.
-These should be features that you will make very clear from the beginning that you will not do during development. These should be limited and very few. Pick your battles wisely. This should only be 1 or 2 things. Example: My website will never turn into an IOS or Android app.
-Minimum Viable Product vs
-What will your MVP functionality be?
+This planner helps the user to stay on track on thier projects, by visually displaying added tasks in a 7 day planner.
 
-What are your stretch goals?
+**Why should we care about your product?**
 
-Stretch
-What stretch goals are you going to aim for?
+- Planning can greatly reduce stress.
+- Proper planning gives you the peace of mind knowing that you have an action plan emplace.
+- Planning also helps you be prepared for obstacles and avoids any conflicts with your schedule ahead of time.
+- Planning your weekly activities will clearly illustrate whether or not you are staying on schedule.
 
-Functional Requirements
-List the functionality of your product. This will consist of tasks such as the following:
 
-An admin can create and delete user accounts
-A user can update their profile information
-A user can search all of the products in the inventory
-Data Flow
-Describe the flow of data in your application. Write out what happens from the time the user begins using the app to the time the user is done with the app. Think about the “Happy Path” of the application. Describe through visuals and text what requests are made, and what data is processed, in addition to any other details about how the user moves through the site.
+## **Scope** 
+Weekly Planner is an app for users to keep track of their weekly events in a 7 day planner page
 
-Non-Functional Requirements (301 & 401 only)
-Non-functional requirements are requirements that are not directly related to the functionality of the application but still important to the app.
+### What will the app do
 
-Examples include:
+- User will be able to login a see past events added to the weekly planner
+- The website will allow users to add an event from a dropdown list to a 7 day weekly planner displayed on the screen
+- Users will be able to click on existing events to access additional information for each event on the planner 
+- The initial events available from the website are: 
+  1. Meals 
+  2. Exercise
+  3. To do
+- The app will display a chart of the events by category
+ 
+### What will the app not do
 
-Security
-Usability
-Testability
-etc….
-Pick 2 non-functional requirements and describe their functionality in your application.
+- The users will not able able to share the calendar with other users
+- The app will not send any sort of notifcations to users
 
-If you are stuck on what non-functional requirements are, do a quick online search and do some research. Write a minimum of 3-5 sentences to describe how the non-functional requirements fits into your app.
 
-You MUST describe what the non-functional requirement is and how it will be implemented. Simply saying “Our project will be testable for testibility” is NOT acceptable. Tell us how, why, and what.
+### What will your MVP functionality be?
+
+A page that allows users to login using a username, and displays a 7 day weekly planner on the screen. Users can add new events from a dropdown menu. Previuosly added events will be displayed upon user's login to the page. 
+
+### What are your stretch goals?
+
+- A user will be able to go to the events page and edit a particular project. 
+Example: If a user adds a Meal event on Monday, the user will be able to click on that event, which will take him/her to the events page. Users will then be able to add specific details to this event, like ingridients list, and add those ingredients to a grocery list
+- Add more evnts to the dropdown list. Initally we are going to start with 3 events: Meals, Exersice, and To do
+- Users can create their own events, in addition to the ones listed in the dropdown
+- Start the weekly planner on the day the user visits the website 
+- Allow users to see past events and add future events
+
+### Functional Requirements
+
+A user can create an account
+A user can create an event and added to the calendar
+A user can manage each individual event and add informations to each of them
+
+
+## Data Flow
+
+A welcome page is presented to a user and asks for a username. The user enters the name. If it does not exist, it will create a new username in the User constructor function. If it already exist, it will welcome to user and display any existing information in the main page. 
+
+The main page allows users to add events to a planner. The users will have 3 options from a dropdown to add to the planner. Each option will create an event and will be displayed in the planner. Each event is a funtion constructor that will hold properties and methods about the particular event. 
+
+An event page will be added and users will be able to see any additional information regarding each event. 
