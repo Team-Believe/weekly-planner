@@ -49,6 +49,7 @@ Example: If a user adds a Meal event on Monday, the user will be able to click o
 - Start the weekly planner on the day the user visits the website 
 - Allow users to see past events and add future events
 
+
 ### Functional Requirements
 
 A user can create an account
