@@ -1,0 +1,35 @@
+#detailSection{
+    display: flex;
+    text-align: left;
+    margin: 1% 1% 2% 1%;
+}
+
+#detailedList{
+    width: 20%;
+    border: 1px solid black;
+    text-align: left;
+    margin-right: 1%;
+}
+
+#listHeader{
+    display: inline-flex;
+    padding: 3px;
+}
+
+#listHeader h3{
+    font-size: 16px;
+    margin-right: 120px;
+    width: 60%;
+}
+
+#detailedInformationSection{
+    width: 80%;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+
+#detailPic{
+    float: right;
+    /* margin-right: 10px; */
+}
