@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weekly Planner</title>
+        <link rel="stylesheet" href="css/reset.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+    </head>
+    <body>
+        <header>
+            <h1>USERNAME'S upcoming Week!</h1>
+            <nav>
+                <ul id="navBarList">
+                    <li><a href="detailPage.html">Exercises</a></li>
+                    <li><a href="detailPage.html">Meal</a></li>
+                    <li><a href="detailPage.html">To Do List</a></li>
+                    <li><a href="index.html">Switch User</a></li>
+                </ul>
+            </nav>
+            <img id="logo" src="https://via.placeholder.com/50x50/" alt="placeholder">
+        </header>
+        <main>
+            <section id="weeklyDisplaySection">
+                <!-- <h2>Weekly Display</h2> -->
+                <div class="displayDay" id="day1"> <!-- could change id to Sunday, but keeping id with integer helps for the Stretch goal -->
+                    <h3 class="displayHeaderDay" id="day1_Name">MONDAY</h3>
+                    <!-- Stretch Goal Date: <p id="day1_Date"></p> -->
+                    <ul class="displayListDay" id="day1_List">
+                        <li>placeholder</li>
+                        <!-- DOMit Team Assemble!! -->
+                    </ul>
+                </div>
+                <div class="displayDay" id="day2"> 
+                    <h3 class="displayHeaderDay" id="day2_Name">TUESDAY</h3>
+                    <!-- Stretch Goal Date: <p id="day2_Date"></p> -->
+                    <ul class="displayListDay" id="day2_List">
+                        <!-- DOMit Team Assemble!! -->
+                    </ul>
+                </div>
+                <div class="displayDay" id="day3"> 
+                    <h3 class="displayHeaderDay" id="day3_Name">WEDNESDAY</h3>
+                    <!-- Stretch Goal Date: <p id="day3_Date"></p> -->
+                    <ul class="displayListDay" id="day3_List">
+                        <!-- DOMit Team Assemble!! -->
+                    </ul>
+                </div>
+                <div class="displayDay" id="day4"> 
+                    <h3 class="displayHeaderDay" id="day4_Name">THURSDAY</h3>
+                    <!-- Stretch Goal Date: <p id="day4_Date"></p> -->
+                    <ul class="displayListDay" id="day4_List">
+                        <!-- DOMit Team Assemble!! -->
+                    </ul>
+                </div>
+                <div class="displayDay" id="day5"> 
+                    <h3 class="displayHeaderDay" id="day5_Name">FRIDAY</h3>
+                    <!-- Stretch Goal Date: <p id="day5_Date"></p> -->
+                    <ul class="displayListDay" id="day5_List">
+                        <!-- DOMit Team Assemble!! -->
+                    </ul>
+                </div>
+                <div class="displayDay" id="day6"> 
+                    <h3 class="displayHeaderDay" id="day6_Name">SATURDAY</h3>
+                    <!-- Stretch Goal Date: <p id="day6_Date"></p> -->
+                    <ul class="displayListDay" id="day6_List">
+                        <!-- DOMit Team Assemble!! -->
+                    </ul>
+                </div>
+                <div class="displayDay" id="day7"> 
+                    <h3 class="displayHeaderDay" id="day7_Name">SUNDAY</h3>
+                    <!-- Stretch Goal Date: <p id="day7_Date"></p> -->
+                    <ul class="displayListDay" id="day7_List">
+                        <!-- DOMit Team Assemble!! -->
+                    </ul>
+                </div>
+            </section>
+            <section id="formChartSection">
+                <form id="addNewTask_Form">
+                    <div id="addNewSection">
+                        <h3>Add Task</h3>
+                        <div id="selectCategory">
+                            <button id="taskCategory">Select Category</button>
+                            <div class="dropdownCategory" id="categoryDropdown">
+                                <button id="exercise">Exercise</button>
+                                <button id="meal">Meal</button>
+                                <button id="toDo">To Do List</button>
+                                <!-- Stretch Goal UserDefined: <button id="userDefined#">USER DEFINED</button>-->
+                            </div>
+                        </div>
+                    </div>
+                    <label>Enter task...<input id="taskEntered" type="text"></label>
+                    
+                    <fieldset id="daysTaskApplied">
+                        <input type="checkbox" id="day1"> <label for="day1"></label>MON</label>
+                        <input type="checkbox" id="day2"> <label for="day2">TUE</label>
+                        <input type="checkbox" id="day3"> <label for="day3">WED</label>
+                        <input type="checkbox" id="day4"> <label for="day4">THUR</label>
+                        <input type="checkbox" id="day5"> <label for="day5">FRI</label>
+                        <input type="checkbox" id="day6"> <label for="day6">SAT</label>
+                        <input type="checkbox" id="day7"> <label for="day7">SUN</label>
+                    </fieldset>
+                    <a href="detailPage.html"><button id="detailButton">Add More Info</button></a>
+                    <button id="submitButton">Apply Event</button>
+                </form>
+                <canvas id="overviewChart"></canvas>
+            </section>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>
