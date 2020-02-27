@@ -1,24 +1,37 @@
-# weekly-planner
-Authors: Cassandra Ortiz, Richard Whitehead, Chuck Villalobos, and Lesley Rivera
+# **weekly-planner**
 
-- Summary of idea.
-Weekly Planner (7-Day).
-- What problem or pain point does it solve? a. Keep it high level without going into too much detail. (3-4 sentences is enough)
-To assist the user with daily planning for 7 days.
-- Minimum MVP definition.
-What is the minimum required for you to present on your demo day?
+Welcome to Team's DOMit Final Project. We created an app called weekly-planner. This app will serve as place for users to keep track of daily events. 
+
+## **Vision**
+*To provide users with a place where they can plan out daily events for a seven day period*
+
+## **Authors** 
+- [Cassandra Ortiz](https://github.com/cassandraortiz)
+- [Chuck Li Villalobos](https://github.com/ticochuck)
+- [Lesley Rivera](https://github.com/les1208)
+- [Richard Whitehead](https://github.com/RichWhitehead)
+
+
+## **Minimum MVP definition**
 We have a calendar page where users can add an event from a drop down and that event to the selected day of the week. This will be displayed on the selected day.
 
-- User stories https://trello.com/b/7Xz1xmbl/weekly-planner
+## **User Stories** 
+User Stories are listed in our Trello board: 
+https://trello.com/b/7Xz1xmbl/weekly-planner
 
-## 2/24
 
-- Completed software requirement documents. 
+## **Daily accomplishment and Challanges**
 
-- Added js,css,gitiginore,eslintrc.json folders/files for initial scaffold
+Day | Accomplisments | Blockers
+--- | --- | ---
+**02/24** | `Created initial scaffold` | *Merging Issues*
+- | `Completed software requirement documents` | 
+- | `Complete initial proof of concept` | 
+- | `Added local storage information to the data flow chart` | 
+**02/25** | `Added Object Constructors to the app.js file` | *Merging Issues*
+- | `Created wireframe html pages ` | 
+- | `Created function to determine if User already exists in Users Array` | 
+**02/26** | `Updated README` | *Merging Issues*
+- | `Updated Requirements.md` |  
+- | `...` | 
 
-- Complete initial proof of concept.
-
-- Added local storage information to the data flow chart.
-
-- Had intial stand-up with Instructor and TA.

@@ -1,0 +1,29 @@
+#groupDisplaySection{
+    width: 96%;
+    text-align: center;
+    display: inline-flex;
+    min-height: 500px;
+    max-height: fit-content;
+    /* height: 500px; */
+    margin-bottom: 20px;
+    max-height: fit-content;
+    justify-content: space-between;
+}
+
+.memberSection{
+    border: black 1px solid;
+    width: 300px;
+    height: initial;
+    background-color: ivory;
+}
+
+.memberName{
+    background-color: rgba(109,109,109,.75);
+    padding: 4px 0px;
+    margin-bottom: 5px;
+}
+
+.memberPic{
+    margin: auto;
+    border: black solid 1px;
+}
