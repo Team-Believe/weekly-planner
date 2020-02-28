@@ -4,14 +4,16 @@ var userMeals = [];
 var userExercise = [];
 var userToDo = [];
 var mainUsersArr = [];
+var usersPlanner = [];
 var cIdx;
 
 //constructor for user
-function UserData(userName, userMeals, userExercise, userToDo) {
+function UserData(userName, userMeals=[], userExercise=[], userToDo=[], usersPlanner=[]) {
   this.userName = userName;
   this.Meals = userMeals;
   this.Exercise = userExercise;
   this.ToDo = userToDo;
+  this.Planner = usersPlanner;
   mainUsersArr.push(this);
 }
 //constrcutor for user meals
@@ -31,15 +33,22 @@ function Exercise(name) {
   this.typeOfExcercise = '';
   this.reps = 0;
   this.calsToBurn = 0;
-
   userExercise.push(this);
-
 }
+
 //contructor for users to do list
 function ToDo(name) {
   this.title = name;
   this.list = [];
   userToDo.push(this);
+}
+//contructor for users set Planner
+function TaskByDay (Day, category, Task, Time){
+  this.day = Day;
+  this.category = category;
+  this.task = Task;
+  this.time = Time;
+  usersPlanner.push(this);
 }
 
 //function to look for existing user name
@@ -49,17 +58,19 @@ function findUser(name) {
     if (name === mainUsersArr[i].userName) {
       console.log('Welcome back dude');
       existingUser = true;
-      cIdx = i;
+      localStorage.setItem('CurrentUser', JSON.stringify(i));
       break;
     }
   } 
   if (existingUser === false) {
     console.log('New user hola');
     new UserData(name);
-    cIdx = mainUsersArr.length -1;
+    localStorage.setItem('CurrentUser', JSON.stringify(mainUsersArr.length -1)); 
   }
   console.log(cIdx);
 }
+
+cIdx = JSON.parse(localStorage.getItem('CurrentUser'))
 // //Event to get user name from input
 // var userNameEvent = document.getElementById('formUserName');
 // userNameEvent.addEventListener('submit', handleSubmit);
@@ -77,8 +88,8 @@ function findUser(name) {
 function toLocalStorage(){
   var stringArr = JSON.stringify(mainUsersArr);
   localStorage.setItem('swMainUsers', stringArr);
-  var currUser = JSON.stringify(cIdx);
-  localStorage.setItem('CurrentUser', currUser);
+  // var currUser = JSON.stringify(cIdx);
+  // localStorage.setItem('CurrentUser', JSON.stringify(cIdx));
 }
 function populateUsers(){
   if (localStorage.getItem('swMainUsers')) {
@@ -88,7 +99,7 @@ function populateUsers(){
     // console.log(mainUsersArr);
     // console.log(allStoredUsers);
     for (var i = 0; i < allStoredUsers.length; i++) {
-      new UserData(allStoredUsers[i].userName, allStoredUsers[i].Meals, allStoredUsers[i].Exercise, allStoredUsers[i].ToDo);
+      new UserData(allStoredUsers[i].userName, allStoredUsers[i].Meals, allStoredUsers[i].Exercise, allStoredUsers[i].ToDo, allStoredUsers[i].TaskByDay);
     }
 
     

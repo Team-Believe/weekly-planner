@@ -44,3 +44,26 @@ p{
     color: blue;
 
 }
+
+#ExerciseTask{
+    background-color: lightgreen;
+    border: black 1px solid;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+
+#MealTask{
+    background-color: lightblue;
+    border: black 1px solid;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+
+#ToDoTask{
+    background-color: lightpink;
+    border: black 1px solid;
+    border-radius: 4px;
+    margin: 2px;
+}

@@ -6,12 +6,9 @@ var taskCategory = document.getElementById('taskCategory');
 var timeDropdown = document.getElementById('daytimeSelected');
 var dropDownSection = document.getElementById('timeOfDay_Dropdown');
 var headerName = document.getElementById('headerWelcome');
-var cIdx = JSON.parse(localStorage.getItem('CurrentUser'));
 
 // Apply Users Name to the Header
-console.log(cIdx);
 headerName.textContent = `${mainUsersArr[cIdx].userName}'s Week`;
-
 
 //EVENT: Apply li to the Weekly Planner based on Days checked
 // - the time of day selected will place in the corresponding ul
@@ -33,12 +30,14 @@ function findDaysApplied(e){
 
     if (dayChecked.checked){
       var taskItem = document.createElement('li');
-      taskItem.textContent = `${taskEntered}`;
+      taskItem.textContent = `${category}: ${taskEntered}`;
       taskItem.id = `${category}Task`;
       postSection.appendChild(taskItem);
+      new TaskByDay(`day${x}`, category, taskEntered, timeOfDay);
+      mainUsersArr[cIdx].Planner = usersPlanner;
     }
   }
-
+  toLocalStorage();
   applyTask.reset();
   dropDownSection.style.display = 'none';
 }
