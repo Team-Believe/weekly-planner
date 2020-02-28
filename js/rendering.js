@@ -5,11 +5,17 @@ var applyTask = document.getElementById('addNewTask_Form');
 var taskCategory = document.getElementById('taskCategory');
 var timeDropdown = document.getElementById('daytimeSelected');
 var dropDownSection = document.getElementById('timeOfDay_Dropdown');
+var headerName = document.getElementById('headerWelcome');
+
+// Apply Users Name to the Header
+headerName.textContent = `${mainUsersArr[cIdx].userName}'s Week`;
 
 //EVENT: Apply li to the Weekly Planner based on Days checked
 // - the time of day selected will place in the corresponding ul
 // - adds the task name to the li
 // - gives the li an ID of: '[Category]Task' - for styling
+// - Create the new taskbyDay and save to local storage
+// - reset the form
 //============================================================
 applyTask.addEventListener('submit', findDaysApplied);
 
@@ -19,6 +25,8 @@ function findDaysApplied(e){
   var timeOfDay = e.target.daytimeSelected.value;
   var taskEntered = e.target.taskEntered.value;
 
+  findExistingTask(taskEntered, category);
+
   for(var x = 1; x <= 7; x++){
 
     var dayChecked = document.getElementById(`day${x}_chkbx`);
@@ -26,17 +34,20 @@ function findDaysApplied(e){
 
     if (dayChecked.checked){
       var taskItem = document.createElement('li');
-      taskItem.textContent = `${taskEntered}`;
+      taskItem.textContent = `${category}: ${taskEntered}`;
       taskItem.id = `${category}Task`;
       postSection.appendChild(taskItem);
+      new TaskByDay(`day${x}`, category, taskEntered, timeOfDay);
+      mainUsersArr[cIdx].Planner = usersPlanner;
     }
   }
-
+  toLocalStorage();
   applyTask.reset();
   dropDownSection.style.display = 'none';
 }
-//https://www.w3schools.com/howto/howto_js_todolist.asp
 
+//https://www.w3schools.com/howto/howto_js_todolist.asp
+//http://archive.oreilly.com/oreillyschool/courses/javascript2/DeletingTodoListItems.html
 
 //EVENT: Show/Hide Time of Day Dropdown Menu
 // - This event will also populate the dropdown
@@ -79,3 +90,9 @@ function dayDropdownList(e){
     }
   }
 }
+
+// Starting function to find if task exists.
+// function findExistingTask(title, category){
+//   var searchArr = `mainUsersArr[${cIdx}].user${category}`;
+//   console.log(searchArr.length);
+// }
