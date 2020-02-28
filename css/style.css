@@ -76,13 +76,14 @@ main{
 .displyHeaderDay{
     background-color: rgba(109,109,109,.75);
     padding: 4px 0px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .displayListDay{
     width: 96%;
     margin: auto;
-    border: black solid 1px;
+    padding: 4px 0px;
+    /* border: black solid 1px; */
 }
 
 /* =============================
