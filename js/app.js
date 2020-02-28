@@ -59,6 +59,8 @@ function findUser(name) {
   }
 }
 
+
+
 new Meals('pasta');
 new Meals('protein shake');
 new Exercise('crossfit');
@@ -66,3 +68,4 @@ new Exercise('yoga');
 new UserData('Chuck');
 new UserData('Cassandra');
 new UserData('Lesley');
+new UserData('Rich');
