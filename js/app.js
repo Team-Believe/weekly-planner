@@ -30,7 +30,9 @@ function Exercise(name) {
   this.typeOfExcercise = '';
   this.reps = 0;
   this.calsToBurn = 0;
+
   userExercise.push(this);
+
 }
 //contructor for users to do list
 function ToDo(name) {
@@ -43,6 +45,7 @@ var cIdx;
 function findUser(name) {
   var existingUser = false;
   for (var i = 0; i < mainUsersArr.length; i++) {
+
     if (name === mainUsersArr[i].userName) {
       console.log('Welcome back dude');
       existingUser = true;
@@ -69,12 +72,14 @@ function handleSubmit(e) {
   // window.location.href = 'main.html';
 }
 
+
 function toLocalStorage(){
   var stringArr = JSON.stringify(mainUsersArr);
   localStorage.setItem('swMainUsers', stringArr);
 }
 function populateUsers(){
   if (localStorage.getItem('swMainUsers')) {
+
     console.log('there is something in local storage');
     var allStoredUsers = JSON.parse(localStorage.getItem('swMainUsers'));
     console.log(allStoredUsers);
