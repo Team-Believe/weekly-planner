@@ -113,47 +113,39 @@ FORM SECTION
     margin-right: 30px;
 }
 
-#addNewSection{
-    display: inline-flex;
+/* #addNewSection{
     width: 100%;
     margin-bottom: 10px;
-}
+} */
 
 /* dropdown Category Menu
 =====================*/
-#selectCategory{
-    width: 35%;
-}
-
 #taskCategory{
     width: 100%;
+    text-align: right;
     font-size: 18px;
-    height: 35px;
+    height: 30px;
+    margin: 5px;
 }
 
-#taskCategory:hover .dropdownCategory{
+#daytimeSelected{
+    width: 50%;
+    text-align: right;
+    font-size: 18px;
+    height: 30px;
+    margin: 5px;
+}
+
+#timeOfDay_Dropdown{
+    width: 100%;
     display: none;
-}
-
-
-.dropdownCategory{
-    display: inline-grid;
-}
-
-.dropdownCategory button{
-    font-size: 18px;
-    text-align: left;
-    padding-left: 20px;
-}
-
-.dropdownCategory button:hover{
-    color: blue;
 }
 
 #taskEntered{
     margin-bottom: 15px;
-    font-size: 12px;
-    width: 80%;
+    height: 30px;
+    font-size: 18px;
+    width: 100%;
 }
 
 /* days of the week

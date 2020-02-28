@@ -93,7 +93,7 @@ new UserData('Cassandra');
 new UserData('Lesley');
 new UserData('Rich');
 
-// handleSubmit();
+handleSubmit();
 console.log('Stating Event Listener');
 userNameEvent.addEventListener('submit', handleSubmit);
 
