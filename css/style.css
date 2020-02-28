@@ -59,7 +59,7 @@ main{
     width: 96%;
     text-align: center;
     display: inline-flex;
-    min-height: 400px;
+    min-height: 250px;
     max-height: fit-content;
     /* height: 500px; */
     margin-bottom: 30px;
@@ -82,8 +82,33 @@ main{
 .displayListDay{
     width: 96%;
     margin: auto;
+    min-height: 50px;
     padding: 4px 0px;
     /* border: black solid 1px; */
+}
+
+
+#ExerciseTask{
+    background-color: lightgreen;
+    border: black 1px solid;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+
+#MealTask{
+    background-color: lightblue;
+    border: black 1px solid;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+
+#ToDoTask{
+    background-color: lightpink;
+    border: black 1px solid;
+    border-radius: 4px;
+    margin: 2px;
 }
 
 /* =============================

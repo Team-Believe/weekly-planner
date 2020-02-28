@@ -14,6 +14,8 @@ headerName.textContent = `${mainUsersArr[cIdx].userName}'s Week`;
 // - the time of day selected will place in the corresponding ul
 // - adds the task name to the li
 // - gives the li an ID of: '[Category]Task' - for styling
+// - Create the new taskbyDay and save to local storage
+// - reset the form
 //============================================================
 applyTask.addEventListener('submit', findDaysApplied);
 
@@ -22,6 +24,8 @@ function findDaysApplied(e){
   var category = e.target.taskCategory.value;
   var timeOfDay = e.target.daytimeSelected.value;
   var taskEntered = e.target.taskEntered.value;
+
+  findExistingTask(taskEntered, category);
 
   for(var x = 1; x <= 7; x++){
 
@@ -41,8 +45,9 @@ function findDaysApplied(e){
   applyTask.reset();
   dropDownSection.style.display = 'none';
 }
-//https://www.w3schools.com/howto/howto_js_todolist.asp
 
+//https://www.w3schools.com/howto/howto_js_todolist.asp
+//http://archive.oreilly.com/oreillyschool/courses/javascript2/DeletingTodoListItems.html
 
 //EVENT: Show/Hide Time of Day Dropdown Menu
 // - This event will also populate the dropdown
@@ -85,3 +90,9 @@ function dayDropdownList(e){
     }
   }
 }
+
+// Starting function to find if task exists.
+// function findExistingTask(title, category){
+//   var searchArr = `mainUsersArr[${cIdx}].user${category}`;
+//   console.log(searchArr.length);
+// }
