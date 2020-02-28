@@ -82,9 +82,10 @@ function populateUsers(){
 
     console.log('there is something in local storage');
     var allStoredUsers = JSON.parse(localStorage.getItem('swMainUsers'));
-    console.log(allStoredUsers);
+    // console.log(mainUsersArr);
+    // console.log(allStoredUsers);
     for (var i = 0; i < allStoredUsers.length; i++) {
-      new UserData(allStoredUsers[i].userName, allStoredUsers[i].userMeals, allStoredUsers[i].userExercise, allStoredUsers[i].userToDo);
+      new UserData(allStoredUsers[i].userName, allStoredUsers[i].Meals, allStoredUsers[i].Exercise, allStoredUsers[i].ToDo);
     }
   } else {
     console.log('there is no local storage');
