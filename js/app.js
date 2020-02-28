@@ -32,7 +32,7 @@ function Exercise(name) {
   this.duration = 0;
   this.typeOfExcercise = '';
   this.reps = 0;
-  this.calsBurned = 0;
+  this.calsToBurn = 0;
   userMeals.push(this);
 }
 
@@ -45,50 +45,41 @@ function ToDo(name) {
 
 //function to look for existing user name
 function findUser(name) {
+  var existingUser = false;
   for (var i = 0; i < mainUsersArr.length; i++) {
-    if (name === mainUsersArr[i].userName) {
-      alert(`Welcome Back ${name}`);
-      // break
-    } else {
-      alert('We need to create user');
-    }
-
+   if (name === mainUsersArr[i].userName) {
+      console.log('Welcome back dude')
+      existingUser = true;
+      break;
+    } 
+  }
+  if (existingUser === false) {
+    console.log('New user hola')
+    new UserData(name);
   }
 }
 
-<<<<<<< HEAD
-
-
-=======
 //Event to get user name from input 
 var userNameEvent = document.getElementById('formUserName');
-
+userNameEvent.addEventListener('submit', handleSubmit);
 
 
 function handleSubmit(e) {
 
   // Check if "Chuck is in the Main Arr users
   // if Chuck is there ...
-  // --- PopulateUsers()
-  //--- pass through object index info
+  //  PopulateUsers()
+  // pass through object index info
   // if Chuck is NOT there ...
-  // --- new UserData()
-  // --- toLocalStorage()
-
-  console.log('Inside the handle submit');
+  //  new UserData()
+  //  toLocalStorage()
+  onclick
   e.preventDefault();
-  // new UserData('Roger');
-  console.log(e.target);
-  var newUserOne = e.target.userName.value;
-  new UserData(newUserOne);
-
-  console.log(newUserOne);
-
+  var newUser = e.target.userName.value;
+  findUser(newUser);
+  // new UserData(newUser);
   toLocalStorage();
-  populateUsers();
 }
-
->>>>>>> 8eeb54ac04873c623d5510afe94cd413230c89db
 new Meals('pasta');
 new Meals('protein shake');
 new Exercise('crossfit');
@@ -97,8 +88,6 @@ new UserData('Chuck');
 new UserData('Cassandra');
 new UserData('Lesley');
 new UserData('Rich');
-<<<<<<< HEAD
-=======
 
 handleSubmit();
 console.log('Stating Event Listener');
@@ -110,15 +99,22 @@ function toLocalStorage(){
 }
 
 function populateUsers(){
-  if (localStorage.getItem('swMainUsers')){
-    var allStoredUsers = JSON.parse(localStorage.getItem('swMainUsers'));
-
-    // for (var i = 0; i < allStoredUsers.length; i++) {
-    //   // new UserData()
-    // }
+  if (localStorage.getItem('swMainUsers')) {
     console.log(`there is something in local storage`);
+    var allStoredUsers = JSON.parse(localStorage.getItem('swMainUsers'));
+    for (var i = 0; i < allStoredUsers.length; i++) {
+      new UserData(allStoredUsers[i].userName);
+    }
   } else {
-    console.log(`there is no local storage`);
-  }
+      console.log(`there is no local storage`);
+      new Meals('pasta');
+      new Meals('protein shake');
+      new Exercise('crossfit');
+      new Exercise('yoga');
+      new UserData('Chuck');
+      new UserData('Cassandra');
+      new UserData('Lesley');
+      new UserData('Rich');
+    }
 }
->>>>>>> 8eeb54ac04873c623d5510afe94cd413230c89db
+populateUsers();
