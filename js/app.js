@@ -80,15 +80,18 @@ function handleSubmit(e) {
   // new UserData(newUser);
   toLocalStorage();
 }
+new Meals('pasta');
+new Meals('protein shake');
+new Exercise('crossfit');
+new Exercise('yoga');
+new UserData('Chuck');
+new UserData('Cassandra');
+new UserData('Lesley');
+new UserData('Rich');
 
-// new Meals('pasta');
-// new Meals('protein shake');
-// new Exercise('crossfit');
-// new Exercise('yoga');
-// new UserData('Chuck');
-// new UserData('Cassandra');
-// new UserData('Lesley');
-// new UserData('Rich');
+handleSubmit();
+console.log('Stating Event Listener');
+userNameEvent.addEventListener('submit', handleSubmit);
 
 function toLocalStorage(){
   var stringArr = JSON.stringify(mainUsersArr);
@@ -114,5 +117,4 @@ function populateUsers(){
       new UserData('Rich');
     }
 }
-
 populateUsers();

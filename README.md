@@ -34,4 +34,13 @@ Day | Accomplisments | Blockers
 **02/26** | `Updated README` | *Merging Issues*
 - | `Updated Requirements.md` |  
 - | `...` | 
+<<<<<<< HEAD
+--- | --- | ---
+**02/27** | `Updated README` | *Merging Issues*
+- | `Debugging issue` |  
+- | `Created local storage function` | 
+- | `Added event listener function` |
+
+=======
+>>>>>>> 8eeb54ac04873c623d5510afe94cd413230c89db
 
