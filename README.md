@@ -28,18 +28,19 @@ Day | Accomplisments | Blockers
 - | `Completed software requirement documents` | 
 - | `Complete initial proof of concept` | 
 - | `Added local storage information to the data flow chart` | 
---- | --- | ---
 **02/25** | `Added Object Constructors to the app.js file` | *Merging Issues*
 - | `Created wireframe html pages ` | 
 - | `Created function to determine if User already exists in Users Array` | 
---- | --- | ---
 **02/26** | `Updated README` | *Merging Issues*
 - | `Updated Requirements.md` |  
 - | `...` | 
+<<<<<<< HEAD
 --- | --- | ---
 **02/27** | `Updated README` | *Merging Issues*
 - | `Debugging issue` |  
 - | `Created local storage function` | 
 - | `Added event listener function` |
 
+=======
+>>>>>>> 8eeb54ac04873c623d5510afe94cd413230c89db
 
