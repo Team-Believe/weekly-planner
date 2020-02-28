@@ -1,14 +1,16 @@
 'use strict';
 
-// var userMeals = [];
-// var userExercise = [];
-// var userToDo = [];
-// var mainUsersArr = [];
-
+// Global Variables of Elements Needed
 var applyTask = document.getElementById('addNewTask_Form');
 var taskCategory = document.getElementById('taskCategory');
 var timeDropdown = document.getElementById('daytimeSelected');
+var dropDownSection = document.getElementById('timeOfDay_Dropdown');
 
+//EVENT: Apply li to the Weekly Planner based on Days checked
+// - the time of day selected will place in the corresponding ul
+// - adds the task name to the li
+// - gives the li an ID of: '[Category]Task' - for styling
+//============================================================
 applyTask.addEventListener('submit', findDaysApplied);
 
 function findDaysApplied(e){
@@ -16,8 +18,6 @@ function findDaysApplied(e){
   var category = e.target.taskCategory.value;
   var timeOfDay = e.target.daytimeSelected.value;
   var taskEntered = e.target.taskEntered.value;
-
-  console.log('inside event');
 
   for(var x = 1; x <= 7; x++){
 
@@ -27,18 +27,15 @@ function findDaysApplied(e){
     if (dayChecked.checked){
       var taskItem = document.createElement('li');
       taskItem.textContent = `${taskEntered}`;
+      taskItem.id = `${category}Task`;
       postSection.appendChild(taskItem);
-      console.log(`day${x} is checked!  category:${category} and TaskTime: ${timeOfDay} --- taskEntered:${taskEntered}`);
-      dayChecked.uncheck;
     }
   }
 
-  taskEntered = '';
-  category = '';
-
+  applyTask.reset();
+  dropDownSection.style.display = 'none';
 }
-
-
+//https://www.w3schools.com/howto/howto_js_todolist.asp
 
 
 //EVENT: Show/Hide Time of Day Dropdown Menu
@@ -52,7 +49,7 @@ taskCategory.addEventListener('change', dayDropdownList);
 function dayDropdownList(e){
   e.preventDefault();
   var cat = taskCategory.value;
-  var dropDownSection = document.getElementById('timeOfDay_Dropdown');
+  
 
   var mealArr = ['Breakfast','Lunch','Dinner'];
   var valueArr = ['morning','afternoon','evening'];
