@@ -49,8 +49,6 @@ taskCategory.addEventListener('change', dayDropdownList);
 function dayDropdownList(e){
   e.preventDefault();
   var cat = taskCategory.value;
-  
-
   var mealArr = ['Breakfast','Lunch','Dinner'];
   var valueArr = ['morning','afternoon','evening'];
 
