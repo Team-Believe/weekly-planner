@@ -4,7 +4,7 @@ var userMeals = [];
 var userExercise = [];
 var userToDo = [];
 var mainUsersArr = [];
-var usersPlanner = [];
+var userPlanner = [];
 var cIdx;
 
 //constructor for user
@@ -48,7 +48,7 @@ function TaskByDay (Day, category, Task, Time){
   this.category = category;
   this.task = Task;
   this.time = Time;
-  usersPlanner.push(this);
+  userPlanner.push(this);
 }
 
 //function to look for existing user name
@@ -56,48 +56,37 @@ function findUser(name) {
   var existingUser = false;
   for (var i = 0; i < mainUsersArr.length; i++) {
     if (name === mainUsersArr[i].userName) {
-      console.log('Welcome back dude');
       existingUser = true;
       localStorage.setItem('CurrentUser', JSON.stringify(i));
       break;
     }
   } 
   if (existingUser === false) {
-    console.log('New user hola');
     new UserData(name);
     localStorage.setItem('CurrentUser', JSON.stringify(mainUsersArr.length -1)); 
   }
-  console.log(cIdx);
 }
 
+// Set Global variable of the Current user Index
 cIdx = JSON.parse(localStorage.getItem('CurrentUser'));
 
 
 function toLocalStorage(){
   var stringArr = JSON.stringify(mainUsersArr);
   localStorage.setItem('swMainUsers', stringArr);
-  // var currUser = JSON.stringify(cIdx);
-  // localStorage.setItem('CurrentUser', JSON.stringify(cIdx));
 }
 function populateUsers(){
   if (localStorage.getItem('swMainUsers')) {
-
-    console.log('there is something in local storage');
     var allStoredUsers = JSON.parse(localStorage.getItem('swMainUsers'));
-    // console.log(mainUsersArr);
-    // console.log(allStoredUsers);
     for (var i = 0; i < allStoredUsers.length; i++) {
       new UserData(allStoredUsers[i].userName, allStoredUsers[i].Meals, allStoredUsers[i].Exercise, allStoredUsers[i].ToDo, allStoredUsers[i].TaskByDay);
     }
-
-
   } else {
-    console.log('there is no local storage');
     new Meals('pasta');
     new Meals('protein shake');
     new Exercise('crossfit');
     new Exercise('yoga');
-    new UserData('Chuck', userMeals);
+    new UserData('Chuck', userMeals, userExercise);
     new UserData('Cassandra',[],userExercise);
     new UserData('Lesley', userMeals, userExercise);
     new UserData('Rich', userMeals, userExercise);
