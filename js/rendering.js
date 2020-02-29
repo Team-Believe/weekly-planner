@@ -92,7 +92,7 @@ function dayDropdownList(e){
 }
 
 // Starting function to find if task exists.
-// function findExistingTask(title, category){
-//   var searchArr = `mainUsersArr[${cIdx}].user${category}`;
-//   console.log(searchArr.length);
-// }
+function findExistingTask(title, category){
+  var searchArr = `mainUsersArr[${cIdx}].user${category}`;
+  console.log(searchArr.length);
+}
