@@ -39,3 +39,5 @@ Day | Accomplisments | Blockers
 - | `Added event listener function` |
 
 
+
+
