@@ -8,12 +8,12 @@ var userPlanner = [];
 var cIdx;
 
 //constructor for user
-function UserData(userName, userMeals=[], userExercise=[], userToDo=[], usersPlanner=[]) {
+function UserData(userName, userMeals=[], userExercise=[], userToDo=[], userPlanner=[]) {
   this.userName = userName;
   this.Meals = userMeals;
   this.Exercise = userExercise;
   this.ToDo = userToDo;
-  this.Planner = usersPlanner;
+  this.Planner = userPlanner;
   mainUsersArr.push(this);
 }
 //constrcutor for user meals
@@ -79,7 +79,7 @@ function populateUsers(){
   if (localStorage.getItem('swMainUsers')) {
     var allStoredUsers = JSON.parse(localStorage.getItem('swMainUsers'));
     for (var i = 0; i < allStoredUsers.length; i++) {
-      new UserData(allStoredUsers[i].userName, allStoredUsers[i].Meals, allStoredUsers[i].Exercise, allStoredUsers[i].ToDo, allStoredUsers[i].TaskByDay);
+      new UserData(allStoredUsers[i].userName, allStoredUsers[i].Meals, allStoredUsers[i].Exercise, allStoredUsers[i].ToDo, allStoredUsers[i].Planner);
     }
   } else {
     new Meals('pasta');

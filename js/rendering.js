@@ -9,15 +9,15 @@ var headerName = document.getElementById('headerWelcome');
 
 // Apply Users Name to the Header
 headerName.textContent = `${mainUsersArr[cIdx].userName}'s Week`;
-renderPlanner();
 
 // Render Planner
 function renderPlanner(){
+  // var allMaindUsers = JSON.parse(localStorage.getItem('swMainUsers'));
   console.log('we are in the render');
   console.log(mainUsersArr[cIdx].Planner);
   
   for(var i = 0; i < mainUsersArr[cIdx].Planner.length; i++){
-    console.log(mainUsersArr[cIdx].Planner[i]);
+    // console.log(allMaindUsers[cIdx].Planner[i]);
     appendTask(mainUsersArr[cIdx].Planner[i].day,
       mainUsersArr[cIdx].Planner[i].category,
       mainUsersArr[cIdx].Planner[i].task,
@@ -50,13 +50,14 @@ function findDaysApplied(e){
     // var postSection  = document.getElementById(`day${x}_${timeOfDay}`);
 
     if (dayChecked.checked){
-      appendTask(`day${x}`,category, taskEntered, timeOfDay);
+      
       // var taskItem = document.createElement('li');
       // taskItem.textContent = `${category}: ${taskEntered}`;
       // taskItem.id = `${category}Task`;
       // postSection.appendChild(taskItem);
       new TaskByDay(`day${x}`, category, taskEntered, timeOfDay);
-      mainUsersArr[cIdx].Planner = userPlanner;
+      mainUsersArr[cIdx].Planner.push(userPlanner[userPlanner.length-1]);
+      appendTask(`day${x}`,category, taskEntered, timeOfDay);
     }
   }
   console.log(mainUsersArr[cIdx].Exercise);
@@ -157,6 +158,10 @@ function findExistingTask(task, category){
     if(!taskExists){
       new ToDo(task);
       mainUsersArr[cIdx].ToDo.push(userToDo[userToDo.length-1]);
+      
     }
   }
 }
+
+
+renderPlanner();
