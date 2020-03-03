@@ -12,20 +12,13 @@ headerName.textContent = `${mainUsersArr[cIdx].userName}'s Week`;
 
 // Render Planner
 function renderPlanner(){
-  // var allMaindUsers = JSON.parse(localStorage.getItem('swMainUsers'));
-  console.log('we are in the render');
-  console.log(mainUsersArr[cIdx].Planner);
-  
   for(var i = 0; i < mainUsersArr[cIdx].Planner.length; i++){
-    // console.log(allMaindUsers[cIdx].Planner[i]);
     appendTask(mainUsersArr[cIdx].Planner[i].day,
       mainUsersArr[cIdx].Planner[i].category,
       mainUsersArr[cIdx].Planner[i].task,
       mainUsersArr[cIdx].Planner[i].time);
   }
 }
-
-
 
 //EVENT: Apply li to the Weekly Planner based on Days checked
 // - the time of day selected will place in the corresponding ul
@@ -47,14 +40,8 @@ function findDaysApplied(e){
   for(var x = 1; x <= 7; x++){
 
     var dayChecked = document.getElementById(`day${x}_chkbx`);
-    // var postSection  = document.getElementById(`day${x}_${timeOfDay}`);
 
     if (dayChecked.checked){
-      
-      // var taskItem = document.createElement('li');
-      // taskItem.textContent = `${category}: ${taskEntered}`;
-      // taskItem.id = `${category}Task`;
-      // postSection.appendChild(taskItem);
       new TaskByDay(`day${x}`, category, taskEntered, timeOfDay);
       mainUsersArr[cIdx].Planner.push(userPlanner[userPlanner.length-1]);
       appendTask(`day${x}`,category, taskEntered, timeOfDay);
@@ -95,7 +82,7 @@ function dayDropdownList(e){
     timeDropdown.removeChild(timeDropdown.lastElementChild);
   }
 
-  if(cat === 'Meal'){
+  if(cat === 'Meals'){
     dropDownSection.style.display = 'inline-flex';
     for(var i = 0; i<mealArr.length; i++){
       var selection = document.createElement('option');
@@ -123,6 +110,7 @@ function dayDropdownList(e){
 // function to find if task exists.
 function findExistingTask(task, category){
   var taskExists = false;
+  console.log(category);
   // Looks at the Exercise Category & Array
   if (category === 'Exercise'){
     for(var i = 0; i< mainUsersArr[cIdx].Exercise.length; i++){
@@ -137,7 +125,7 @@ function findExistingTask(task, category){
     }
   }
   // Looks at the Meals Category & Array
-  if (category === 'Meal'){
+  if (category === 'Meals'){
     for(i = 0; i< mainUsersArr[cIdx].Meals.length; i++){
       if(mainUsersArr[cIdx].Meals[i].title === task){
         taskExists = true;
@@ -158,10 +146,74 @@ function findExistingTask(task, category){
     if(!taskExists){
       new ToDo(task);
       mainUsersArr[cIdx].ToDo.push(userToDo[userToDo.length-1]);
-      
+
     }
   }
 }
 
+// Pie chart information
 
+var userEx = 0;
+var userM = 0;
+var userTdo =0;
+var userAct = 0;
+
+function chartGen() {
+
+  for(var i = 0; i < mainUsersArr[cIdx].Planner.length; i++){
+    var lookupCat = mainUsersArr[cIdx].Planner[i].category;
+    if(lookupCat === 'Meals'){userM ++;}
+    if(lookupCat === 'Exercise'){userEx ++;}
+    if(lookupCat === 'Activity'){userAct ++;}
+    if(lookupCat === 'ToDo'){userTdo ++;}
+    // userEx.push(mainUsersArr[i].userExercise);
+    // userM.push(mainUsersArr[i].userMeals);
+    // userTdo.push(mainUsersArr[i].userToDo);
+  }
+
+  console.log(userEx);
+  console.log(userM);
+  console.log(userTdo);
+  console.log(userAct);
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      datasets: [{
+        data: [userEx, userM, userTdo,userAct]
+      }],
+      // Pie chart label colors
+      labels: [
+        'Exercise',
+        'Meals',
+        'ToDo',
+        'Activities'
+      ]
+    }
+  });
+}
+
+chartGen();
 renderPlanner();
+
+// Cassy's testing code below
+//*******************************
+//https://stackoverflow.com/questions/17788510/open-page-on-double-clicking-a-list-item
+//https://stackoverflow.com/questions/19655189/javascript-click-event-listener-on-class
+
+var plannerSection = document.getElementById('weeklyDisplaySection');
+
+plannerSection.addEventListener('dblclick', goToDetail,false);
+
+function goToDetail(e) {
+  var elID = e.target.id;
+  var cat = elID.slice(0,elID.length-4);
+  var itemTitle = e.target.textContent.slice(cat.length+2, e.target.textContent.length);
+  var detailItem = [];
+  detailItem.push(cat);
+  detailItem.push(itemTitle);
+  localStorage.setItem('detailItem',JSON.stringify(detailItem));
+  if(cat !== "Activity"){window.location.href = 'detailPage.html';}
+}

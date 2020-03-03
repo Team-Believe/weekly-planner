@@ -3,20 +3,21 @@
     <head>
         <title>Weekly Planner</title>
         <link rel="stylesheet" href="css/reset.css" type="text/css">
-\        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
     </head>
     <body>
         <header>
             <h1 id="headerWelcome">USERNAME'S upcoming Week!</h1>
-            <nav>
-                <ul id="navBarList">
-                    <li><a href="detailPage.html">Exercises</a></li>
-                    <li><a href="detailPage.html">Meal</a></li>
-                    <li><a href="detailPage.html">To Do List</a></li>
-                    <li><a href="index.html">Switch User</a></li>
-                </ul>
-            </nav>
-            <img id="logo" src="https://via.placeholder.com/50x50/" alt="placeholder">
+            <div id="menuDropdown">
+                <button id="menuBtn">Menu</button>
+                <div id="menuList">
+                    <a href="detailPage.html">Category Items</a>
+                    <a href="aboutUs.html">About Us</a>
+                    <a href="profile.html">My Account</a>
+                    <a href="index.html">Sign Out</a>
+                <div>
+            </div>
+            <!-- <img id="logo" src="https://via.placeholder.com/50x50/" alt="placeholder"> -->
         </header>
         <main>
             <section id="weeklyDisplaySection">
@@ -103,12 +104,13 @@
                     <a href="detailPage.html"><button id="detailButton">Add More Info</button></a>
                     <button id="applyTask">Apply Event</button>
                 </form>
-                <canvas id="overviewChart"></canvas>
+                <canvas id="myChart"></canvas>
             </section>
         </main>
         <footer>
 
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
         <script src="js/app.js"></script>
         <script src="js/rendering.js"></script>
     </body>

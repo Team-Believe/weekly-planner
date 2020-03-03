@@ -7,6 +7,8 @@ var mainUsersArr = [];
 var userPlanner = [];
 var cIdx;
 
+
+
 //constructor for user
 function UserData(userName, userMeals=[], userExercise=[], userToDo=[], userPlanner=[]) {
   this.userName = userName;
@@ -91,6 +93,12 @@ function populateUsers(){
     new UserData('Lesley', userMeals, userExercise);
     new UserData('Rich', userMeals, userExercise);
   }
+}
+
+function deleteUserFunction() {
+  mainUsersArr.splice(cIdx, 1);
+  toLocalStorage();
+  window.location.href = 'index.html';
 }
 
 populateUsers();
