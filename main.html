@@ -3,19 +3,27 @@
     <head>
         <title>Weekly Planner</title>
         <link rel="stylesheet" href="css/reset.css" type="text/css">
-\        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
     </head>
     <body>
         <header>
             <h1 id="headerWelcome">USERNAME'S upcoming Week!</h1>
-            <nav>
+            <div class="dropdown">
+                <button class="dropbtn">My Account</button>
+                <div class="dropdown-content">
+                    <a href="profile.html">My Profile</a>
+                    <a href="detailPage.html">My Events</a>
+                    <a href="index.html">Sign out</a>
+                </div>
+            </div>
+            <!-- <nav>
                 <ul id="navBarList">
                     <li><a href="detailPage.html">Exercises</a></li>
                     <li><a href="detailPage.html">Meal</a></li>
                     <li><a href="detailPage.html">To Do List</a></li>
                     <li><a href="index.html">Switch User</a></li>
                 </ul>
-            </nav>
+            </nav> -->
             <img id="logo" src="https://via.placeholder.com/50x50/" alt="placeholder">
         </header>
         <main>
@@ -103,12 +111,13 @@
                     <a href="detailPage.html"><button id="detailButton">Add More Info</button></a>
                     <button id="applyTask">Apply Event</button>
                 </form>
-                <canvas id="overviewChart"></canvas>
+                <canvas id="myChart"></canvas>
             </section>
         </main>
         <footer>
 
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
         <script src="js/app.js"></script>
         <script src="js/rendering.js"></script>
     </body>
