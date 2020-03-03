@@ -76,7 +76,7 @@
                     <h3>Add Task</h3>
                     <!-- <div id="addNewSection"> -->
                         <label>Choose a Category:</label>
-                        <select id="taskCategory">
+                        <select id="taskCategory" required>
                             <option value=""></option>
                             <option value="Exercise">Exercise</option>
                             <option value="Meals">Meal</option>
@@ -85,11 +85,12 @@
                         </select>
                         <div id="timeOfDay_Dropdown">
                             <label>Time of Day:</label>
-                            <select id="daytimeSelected">                                <option value=""></option>
+                            <select id="daytimeSelected">
+                                <option value=""></option>
                             </select>
                         </div>
                     <!-- </div> -->
-                    <label>Enter task...<input id="taskEntered" type="text"></label>    
+                    <label>Enter task...<input id="taskEntered" type="text" required></label>    
                     <fieldset id="daysTaskApplied">
                         <input type="checkbox" id="day1_chkbx" value="day1"> <label for="day1">MON</label>
                         <input type="checkbox" id="day2_chkbx" value="day2"> <label for="day2">TUE</label>

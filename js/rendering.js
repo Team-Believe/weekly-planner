@@ -10,13 +10,30 @@ var headerName = document.getElementById('headerWelcome');
 // Apply Users Name to the Header
 headerName.textContent = `${mainUsersArr[cIdx].userName}'s Week`;
 
+// Render Planner
+function renderPlanner(){
+  // var allMaindUsers = JSON.parse(localStorage.getItem('swMainUsers'));
+  console.log('we are in the render');
+  console.log(mainUsersArr[cIdx].Planner);
+  
+  for(var i = 0; i < mainUsersArr[cIdx].Planner.length; i++){
+    // console.log(allMaindUsers[cIdx].Planner[i]);
+    appendTask(mainUsersArr[cIdx].Planner[i].day,
+      mainUsersArr[cIdx].Planner[i].category,
+      mainUsersArr[cIdx].Planner[i].task,
+      mainUsersArr[cIdx].Planner[i].time);
+  }
+}
+
+
+
 //EVENT: Apply li to the Weekly Planner based on Days checked
 // - the time of day selected will place in the corresponding ul
 // - adds the task name to the li
 // - gives the li an ID of: '[Category]Task' - for styling
 // - Create the new taskbyDay and save to local storage
 // - reset the form
-//============================================================
+//*********************************************************** */
 applyTask.addEventListener('submit', findDaysApplied);
 
 function findDaysApplied(e){
@@ -30,20 +47,31 @@ function findDaysApplied(e){
   for(var x = 1; x <= 7; x++){
 
     var dayChecked = document.getElementById(`day${x}_chkbx`);
-    var postSection  = document.getElementById(`day${x}_${timeOfDay}`);
+    // var postSection  = document.getElementById(`day${x}_${timeOfDay}`);
 
     if (dayChecked.checked){
-      var taskItem = document.createElement('li');
-      taskItem.textContent = `${category}: ${taskEntered}`;
-      taskItem.id = `${category}Task`;
-      postSection.appendChild(taskItem);
+      
+      // var taskItem = document.createElement('li');
+      // taskItem.textContent = `${category}: ${taskEntered}`;
+      // taskItem.id = `${category}Task`;
+      // postSection.appendChild(taskItem);
       new TaskByDay(`day${x}`, category, taskEntered, timeOfDay);
-      mainUsersArr[cIdx].Planner = usersPlanner;
+      mainUsersArr[cIdx].Planner.push(userPlanner[userPlanner.length-1]);
+      appendTask(`day${x}`,category, taskEntered, timeOfDay);
     }
   }
+  console.log(mainUsersArr[cIdx].Exercise);
   toLocalStorage();
   applyTask.reset();
   dropDownSection.style.display = 'none';
+}
+
+function appendTask(day, category, task, time){
+  var postSection  = document.getElementById(`${day}_${time}`);
+  var taskItem = document.createElement('li');
+  taskItem.textContent = `${category}: ${task}`;
+  taskItem.id = `${category}Task`;
+  postSection.appendChild(taskItem);
 }
 
 //https://www.w3schools.com/howto/howto_js_todolist.asp
@@ -54,7 +82,7 @@ function findDaysApplied(e){
 // - based off the Category selected.  This gives the
 // - option for the Meals to be different.
 // - Checkbox value is still the same to coincide with the planner lists
-//=================================================
+//*********************************************************** */
 taskCategory.addEventListener('change', dayDropdownList);
 
 function dayDropdownList(e){
@@ -91,8 +119,49 @@ function dayDropdownList(e){
   }
 }
 
-// Starting function to find if task exists.
-function findExistingTask(title, category){
-  var searchArr = `mainUsersArr[${cIdx}].user${category}`;
-  console.log(searchArr.length);
+// CATEORIES: Exercise, Meals, ToDo, Activity
+// function to find if task exists.
+function findExistingTask(task, category){
+  var taskExists = false;
+  // Looks at the Exercise Category & Array
+  if (category === 'Exercise'){
+    for(var i = 0; i< mainUsersArr[cIdx].Exercise.length; i++){
+      if(mainUsersArr[cIdx].Exercise[i].title === task){
+        console.log('task exists');
+        taskExists = true;
+      }
+    }
+    if(!taskExists){
+      new Exercise(task);
+      mainUsersArr[cIdx].Exercise.push(userExercise[userExercise.length-1]);
+    }
+  }
+  // Looks at the Meals Category & Array
+  if (category === 'Meal'){
+    for(i = 0; i< mainUsersArr[cIdx].Meals.length; i++){
+      if(mainUsersArr[cIdx].Meals[i].title === task){
+        taskExists = true;
+      }
+    }
+    if(!taskExists){
+      new Meals(task);
+      mainUsersArr[cIdx].Meals.push(userMeals[userMeals.length-1]);
+    }
+  }
+  // Looks at the ToDo Category & Array
+  if (category === 'ToDo'){
+    for(i = 0; i< mainUsersArr[cIdx].ToDo.length; i++){
+      if(mainUsersArr[cIdx].ToDo[i].title === task){
+        taskExists = true;
+      }
+    }
+    if(!taskExists){
+      new ToDo(task);
+      mainUsersArr[cIdx].ToDo.push(userToDo[userToDo.length-1]);
+      
+    }
+  }
 }
+
+
+renderPlanner();
