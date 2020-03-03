@@ -8,38 +8,51 @@
     </head>
     <body>
         <header>
-            <h1>USERNAME'S upcoming Week</h1>
-            <nav>
-                <ul id="navBarList">
-                    <li><a href="main.html">Main Page</a></li>
-                    <li><a href="detailPage.html">Meal</a></li>
-                    <li><a href="detailPage.html">To Do List</a></li>
-                    <li><a href="index.html">Switch User</a></li>
-                </ul>
-            </nav>
-            <img id="logo" src="https://via.placeholder.com/50x50/" alt="placeholder">
+            <h1 id="headerWelcome"></h1>
+            <div id="menuDropdown">
+                <button id="menuBtn">Menu</button>
+                <div id="menuList">
+                    <a href="main.html">Planner</a>
+                    <a href="aboutUs.html">About Us</a>
+                    <a href="profile.html">My Account</a>
+                    <a href="#">Meals</a>
+                    <a href="#">Exercises</a>
+                    <a href="#">ToDo</a>
+                    <a href="index.html">Sign Out</a>
+                <div>
+            </div>
+            <!-- <img id="logo" src="https://via.placeholder.com/50x50/" alt="placeholder"> -->
         </header>
         <main>
             <section id="detailSection">
                 <section id="detailedList">
-                    <div id="listHeader">
+                    <!-- <div id="listHeader"> -->
                         <h3>Category List</h3>
-                        <button>Add Item</button>
+                        <!-- <button>Add Item</button> -->
+                    <!-- </div> -->
+                    <div id="addNewItem">
+                        <input id="enterNewItem" type="text" placeholder="new item">
+                        <button id="addTask">+</button>
                     </div>
-                    <ul>
+                    <ul id='categoryList'>
                         <!-- DOMit Team Assemble! -->
                     </ul>
                 </section>
-                <section id="detailedInformationSection">
+                <section id="detailedInfo">
                     <img id="detailPic" src="https://via.placeholder.com/150x150/" alt="placeholder">
-                    <h2>Detailed Item</h2>
+                    <h2 id = "titleName">Detailed Item</h2>
+                    <div id="infoSection">
+
+                    </div>
+                    <button id="saveInfo">Save Info</button> 
                     <!-- Section info based on Object properties -->
                 </section>
             </section>
         </main>
-        <footer>
+        <!-- <footer>
 
-        </footer>
+        </footer> -->
         <script src="js/app.js"></script>
+        <script src="js/detailEvents.js"></script>
     </body>
 </html>
