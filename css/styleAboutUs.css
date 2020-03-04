@@ -9,6 +9,7 @@ background-color: #FFC5A5;
 }
 
 h1 {
+    text-align: center;
     font-family: 'Shadows Into Light';
     font-size: 45px;
 }
@@ -25,6 +26,7 @@ h1 {
 }
 
 .memberSection{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border: black 1px solid;
     width: 300px;
     height: initial;
@@ -32,6 +34,8 @@ h1 {
 }
 
 .memberName{
+    font-family: 'Shadows Into Light';
+    font-size: 35px;
     background-color: #44B3AE;
     padding: 4px 0px;
     margin-bottom: 5px;
@@ -52,3 +56,4 @@ h1 {
 footer {
     background-color: #FFC5A5;
     }
+    
