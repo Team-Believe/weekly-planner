@@ -4,116 +4,243 @@ var headerName = document.getElementById('headerWelcome');
 var detailedItem = JSON.parse(localStorage.getItem('detailItem'));
 var catList = document.getElementById('categoryList');
 var detailSection = document.getElementById('infoSection');
+var detailForm = document.getElementById('detailedInfo');
+var detailHeader = document.getElementById('detailHeader');
+var btnAddNewToDo;
 var cat = detailedItem[0];
 var title = detailedItem[1];
 var showIndex;
 
 headerName.textContent = `${mainUsersArr[cIdx].userName}'s ${cat} Items`;
-
-// Sets the Search Array based on the category 
+document.getElementById('taskCat').value = cat;
+// Sets the Search Array based on the category
 // saved in local storage
 switch(cat){
 case 'Meals':
   var SearchArr = mainUsersArr[cIdx].Meals;
+  renderCatList(SearchArr, title);
+  renderDetailItem(SearchArr,title);
   break;
 case 'Exercise':
   SearchArr = mainUsersArr[cIdx].Exercise;
+  renderCatList(SearchArr, title);
+  renderDetailItem(SearchArr,title);
   break;
 case 'ToDo':
   SearchArr = mainUsersArr[cIdx].ToDo;
+  renderCatList(SearchArr, title);
+  setupToDo(SearchArr, title);
   break;
 default:
   SearchArr = [];
 }
 
-// adds the specific Category Information 
+// adds the specific Category Information
 // to the side list of the detail page
 function renderCatList(arr, task){
   for(var x = 0; x < arr.length; x++){
     var listItem = document.createElement('li');
     listItem.textContent = arr[x].title;
     catList.appendChild(listItem);
-    if(arr[x].title === task){showIndex = x;}
+    if(arr[x].title === task){
+      detailedItem.push(x);
+      localStorage.setItem('detailItem',JSON.stringify(detailedItem));
+      showIndex = x;}
   }
 }
-
-renderCatList(SearchArr, title);
-
-// add the information to the detail section
-// based off the key/value pairs listed in the 
-// specific object
-function renderDetailItem(arr){
-  var objKeys = Object.keys(arr[0]);
-  var objValues = Object.values(arr[0]);
-
-  for(var x = 1; x < objKeys.length; x++){
-    var objType = typeof objValues[x];
-    
-    // Sets up the Label (if Not a ToDO List)
-    if(cat!== 'ToDo'){
-      var keyLabel = document.createElement('label');
-      keyLabel.textContent = objKeys[x];
-      keyLabel.id = `lbl_${objKeys[x]}`;
-      detailSection.appendChild(keyLabel);
-    }
-
-    // Loops through the value if it is an array/object
-    if (objType === 'object'){
-      var objLen = Object.values(objValues[x]).length;
-      if(objLen === 0){objLen=1;}
-
-      for(var y = 0; y < objLen; y++){
-
-        var arrInput = document.createElement('input');
-        // If ToDo List -- creates the Checkbox Before the Label
-        if (cat === 'ToDo'){
-          arrInput.type = "checkbox";
-          keyLabel = document.createElement('label');
-          keyLabel.textContent = objKeys[x];
-          keyLabel.id = `lbl_${objKeys[x]}`;
-          arrInput.appendChild(keyLabel);
-          detailSection.appendChild(arrInput);
-          // if last list item - adds a button to add more
-          if(y === objLen - 1){
-            var btnAdd = document.createElement('button');
-            btnAdd.id = `toDoAdd`;
-            btnAdd.textContent = '+ LI';
-            detailSection.appendChild(btnAdd);
-          }
-        } else {
-          arrInput.textContent = Object.values(objValues[x])[y];
-          arrInput.id = `arr_${objKeys[x]}`;
-          keyLabel.appendChild(arrInput);
-        }
-
-      }
-
-      var addBtn = document.createElement('button');
-      addBtn.textContent = '+';
-      addBtn.id = 'addInput';
-      keyLabel.appendChild(addBtn);
-
-    } else {
-      var valueInput = document.createElement('input');
-      valueInput.textContent = objValues[x];
-      valueInput.id = `input_${objKeys[x]}`;
-      keyLabel.appendChild(valueInput);
-    }
-  }
-}
-
-renderDetailItem(SearchArr);
 
 var saveInfo = document.getElementById('saveInfo');
 
 saveInfo.addEventListener('click', saveTaskInfo);
 
 function saveTaskInfo(e){
-
+  e.preventDefault();
+  var objKey = Object.keys(SearchArr[0]);
+  var objValues = Object.values(SearchArr[0]);
+  for(var k = 1; k<objKey.length; k++){
+    var objType = typeof objValues[k];
+    if (objType === 'object'){
+      var countDiv = document.getElementById(`${objKey[k]}`).childElementCount;
+      for(var d = 0; d<countDiv; d++){
+        var inputFld = document.getElementById(`${objKey[k]}_${d}`);
+        
+        console.log(`text: ${inputFld.textContent}`);
+        console.log(`text: ${inputFld}`);
+      }
+      console.log(`length: ${countDiv}`);
+      console.log(`Object: ${objKey[k]}`);
+    } else {
+      console.log(`Other: ${objKey[k]}`);
+    }
+  }
 }
 
 catList.addEventListener('click',showTaskInfo);
 
 function showTaskInfo(e){
-  console.log(e.target.innerText);
+  var task = e.target.innerText;
+  findTaskIndex(SearchArr, task);
+  var lkupCat = detailedItem[0];
+
+  if(lkupCat === 'ToDo'){
+    setupToDo(SearchArr, task);
+  } else {
+    renderDetailItem(SearchArr,task);
+  }
+}
+
+function findTaskIndex(arr, task){
+  var lkupCat = detailedItem[0];
+  detailedItem = [];
+  for(var x = 0; x < arr.length; x++){
+    if(arr[x].title === task){
+      detailedItem[0] = lkupCat;
+      detailedItem[1] = task;
+      detailedItem[2] = x;
+      localStorage.setItem('detailItem',JSON.stringify(detailedItem));
+      showIndex = x;
+      // break;
+    }
+  }
+}
+
+
+// var addInputFld = document.getElementById('addInput');
+detailSection.addEventListener('click',addInput);
+
+function addInput(e){
+  var clkSect = e.target.id;
+
+  if(clkSect === null ||clkSect === '' || clkSect.search('add_') < 0){
+    detailForm.removeEventListener('click',addInput);
+  } else {
+    e.preventDefault();
+    var sect = clkSect.substr(4, clkSect.length);
+    var addToDiv = document.getElementById(`${sect}`);
+    var sectCt = addToDiv.childElementCount;
+    var newInput = document.createElement('input');
+    newInput.id = `${sect}_${sectCt}`;
+    addToDiv.appendChild(newInput);
+  }
+}
+
+// add the information to the detail section
+// based off the key/value pairs listed in the
+// specific objects (Meals/Exercises)
+function renderDetailItem(arr,task){
+  var objKeys = Object.keys(arr[0]);
+  var objValues = Object.values(arr[0]);
+
+  while(detailSection.childElementCount > 0) {
+    detailSection.removeChild(detailSection.lastElementChild);
+  }
+
+  document.getElementById('titleName').textContent = task;
+
+  //Loops through each Key of the Object
+  for(var x = 1; x < objKeys.length; x++){
+    var objType = typeof objValues[x]; //Gets the object value
+
+    // Sets up the Label (if Not a ToDO List: Meals/Exercise)
+    //--creates element id: ex: 'lbl_Exercise'
+    //--appends to the div:'infoSection'
+    // if(cat!== 'ToDo'){
+    var keyLabel = document.createElement('label');
+    keyLabel.textContent = objKeys[x];
+    keyLabel.class = `lbl_${objKeys[x]}`;
+    detailSection.appendChild(keyLabel);
+    // }
+
+    // Loops through the value if it is an array/object
+    if (objType === 'object'){
+
+      var divInput = document.createElement('div');
+      divInput.id = `${objKeys[x]}`;
+      detailSection.appendChild(divInput);
+
+      //sets objLen to 1, if nothing is listed
+      var objLen = Object.values(objValues[x]).length;
+      if(objLen === 0){objLen=1;}
+
+      //Loops through the Key Array value, sets up Input Box
+      for(var y = 0; y < objLen; y++){
+        var arrInput = document.createElement('input');
+        arrInput.textContent = Object.values(objValues[x])[y];
+        arrInput.id = `${objKeys[x]}_${y}`;
+        arrInput.className = `arr_${objKeys[x]}`;
+        divInput.appendChild(arrInput);
+      }
+      //Create the Add button for the array
+      var addBtn = document.createElement('button');
+      addBtn.textContent = '+';
+      addBtn.id = `add_${objKeys[x]}`;
+      keyLabel.appendChild(addBtn);
+
+    } else { //Create the label with input value
+      var valueInput = document.createElement('input');
+      valueInput.textContent = objValues[x];
+      valueInput.id = `${objKeys[x]}`;
+      keyLabel.appendChild(valueInput);
+    }
+  }
+}
+
+function setupToDo(arr, title){
+  var listCt = arr[showIndex].list.length;
+  // var divCt = detailSection.getElementsByTagName('div').length;
+  document.getElementById('titleName').textContent = title;
+
+  if(document.getElementById('addNewDetailTask') === null){
+    // console.log(`it doesn't exit -- gonna set it up`);
+    var newItemSect = document.createElement('div');
+    newItemSect.className = 'addNewToDo';
+    detailHeader.appendChild(newItemSect);
+    var newInput = document.createElement('input');
+    newInput.placeholder = 'Enter New Task';
+    newInput.id = 'addNewTask';
+    newItemSect.appendChild(newInput);
+    btnAddNewToDo = document.createElement('button');
+    btnAddNewToDo.textContent = 'Add Task';
+    btnAddNewToDo.id = 'addNewDetailTask';
+    newItemSect.appendChild(btnAddNewToDo);
+  } else {
+    while(detailSection.childElementCount > 0) {
+      detailSection.removeChild(detailSection.lastElementChild);
+    }
+  }
+  for(var x = 0; x < listCt; x++){
+    var itemDiv = document.createElement('div');
+    itemDiv.className = `list_${x}`;
+    detailSection.appendChild(itemDiv);
+    var arrItem = document.createElement('p');
+    arrItem.textContent = arr[showIndex].list[x];
+    itemDiv.appendChild(arrItem);
+
+    var itemDelete = document.createElement('div');
+    itemDelete.textContent = 'X';
+    itemDelete.id = 'toDoDelete';
+    itemDiv.appendChild(itemDelete);
+  }
+}
+
+
+// ADD_NEW: To Do task
+if(document.getElementById('addNewDetailTask') !== null){
+  btnAddNewToDo.addEventListener('click',addDivToDO);
+}
+
+function addDivToDO(e){
+  e.preventDefault();
+  var taskCt = detailSection.childElementCount;
+  var itemDiv = document.createElement('div');
+  itemDiv.className = `list_${taskCt}`;
+  detailSection.appendChild(itemDiv);
+  var arrItem = document.createElement('p');
+  arrItem.textContent = document.getElementById('addNewTask').textContent;
+  itemDiv.appendChild(arrItem);
+
+  var itemDelete = document.createElement('div');
+  itemDelete.textContent = 'X';
+  itemDelete.id = 'toDoDelete';
+  itemDiv.appendChild(itemDelete);
 }
