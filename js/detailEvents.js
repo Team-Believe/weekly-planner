@@ -13,6 +13,7 @@ var showIndex;
 
 headerName.textContent = `${mainUsersArr[cIdx].userName}'s ${cat} Items`;
 document.getElementById('taskCat').value = cat;
+
 // Sets the Search Array based on the category
 // saved in local storage
 switch(cat){
@@ -45,7 +46,8 @@ function renderCatList(arr, task){
     if(arr[x].title === task){
       detailedItem.push(x);
       localStorage.setItem('detailItem',JSON.stringify(detailedItem));
-      showIndex = x;}
+      showIndex = x;
+    }
   }
 }
 
@@ -55,26 +57,31 @@ saveInfo.addEventListener('click', saveTaskInfo);
 
 function saveTaskInfo(e){
   e.preventDefault();
-  var objKey = Object.keys(SearchArr[0]);
-  var objValues = Object.values(SearchArr[0]);
+  var objKey = Object.keys(SearchArr[showIndex]);
+  var objValues = Object.values(SearchArr[showIndex]);
+
   for(var k = 1; k<objKey.length; k++){
     var objType = typeof objValues[k];
     if (objType === 'object'){
       var countDiv = document.getElementById(`${objKey[k]}`).childElementCount;
       for(var d = 0; d<countDiv; d++){
-        var inputFld = document.getElementById(`${objKey[k]}_${d}`);
-        
-        console.log(`text: ${inputFld.textContent}`);
-        console.log(`text: ${inputFld}`);
+        var elID = `${objKey[k]}_${d}`;
+        var inputFld = document.getElementById(elID);
+        var objAddEl = eval(`SearchArr[${showIndex}].${objKey[k]}`);
+        objAddEl[d] = inputFld.value;
       }
-      console.log(`length: ${countDiv}`);
-      console.log(`Object: ${objKey[k]}`);
     } else {
-      console.log(`Other: ${objKey[k]}`);
+      elID = `${objKey[k]}`;
+      inputFld = document.getElementById(elID);
+      var inputNum = getTimeMinutes(inputFld.value);
+      SearchArr[showIndex][elID] = inputNum;
     }
   }
+  toLocalStorage();
 }
 
+// EVENT: call the correct function to render detail
+// -- based off the category selected
 catList.addEventListener('click',showTaskInfo);
 
 function showTaskInfo(e){
@@ -89,6 +96,9 @@ function showTaskInfo(e){
   }
 }
 
+// Searches the selected task
+// -- adds info to `detailedItem`
+// -- sets to local storage
 function findTaskIndex(arr, task){
   var lkupCat = detailedItem[0];
   detailedItem = [];
@@ -104,8 +114,7 @@ function findTaskIndex(arr, task){
   }
 }
 
-
-// var addInputFld = document.getElementById('addInput');
+// EVENT: add in new array input box
 detailSection.addEventListener('click',addInput);
 
 function addInput(e){
@@ -128,9 +137,10 @@ function addInput(e){
 // based off the key/value pairs listed in the
 // specific objects (Meals/Exercises)
 function renderDetailItem(arr,task){
-  var objKeys = Object.keys(arr[0]);
+  var objKeys = Object.keys(arr[showIndex]);
   var objValues = Object.values(arr[0]);
 
+  // Removes all previous listed div elements
   while(detailSection.childElementCount > 0) {
     detailSection.removeChild(detailSection.lastElementChild);
   }
@@ -140,16 +150,15 @@ function renderDetailItem(arr,task){
   //Loops through each Key of the Object
   for(var x = 1; x < objKeys.length; x++){
     var objType = typeof objValues[x]; //Gets the object value
-
+    var elID = `${objKeys[x]}`;
+    console.log(`elID: ${elID}`);
     // Sets up the Label (if Not a ToDO List: Meals/Exercise)
     //--creates element id: ex: 'lbl_Exercise'
     //--appends to the div:'infoSection'
-    // if(cat!== 'ToDo'){
     var keyLabel = document.createElement('label');
     keyLabel.textContent = objKeys[x];
     keyLabel.class = `lbl_${objKeys[x]}`;
     detailSection.appendChild(keyLabel);
-    // }
 
     // Loops through the value if it is an array/object
     if (objType === 'object'){
@@ -165,10 +174,12 @@ function renderDetailItem(arr,task){
       //Loops through the Key Array value, sets up Input Box
       for(var y = 0; y < objLen; y++){
         var arrInput = document.createElement('input');
-        arrInput.textContent = Object.values(objValues[x])[y];
+        console.log('hopeful Value:' + SearchArr[showIndex][elID][y]);
+        // arrInput.textContent = Object.values(objValues[x])[y];
         arrInput.id = `${objKeys[x]}_${y}`;
         arrInput.className = `arr_${objKeys[x]}`;
         divInput.appendChild(arrInput);
+        arrInput.textContent = SearchArr[showIndex][elID][y];
       }
       //Create the Add button for the array
       var addBtn = document.createElement('button');
@@ -177,21 +188,32 @@ function renderDetailItem(arr,task){
       keyLabel.appendChild(addBtn);
 
     } else { //Create the label with input value
+      var xKey = `${objKeys[x]}`;
       var valueInput = document.createElement('input');
-      valueInput.textContent = objValues[x];
+      if(xKey === 'prepTime' || xKey === 'cookedTime'){
+        console.log('passthrough:' + SearchArr[showIndex][elID]);
+        var txt = returnTime(SearchArr[showIndex][elID]);
+      } else {
+        txt = SearchArr[showIndex][elID];
+      }
+      console.log(txt);
       valueInput.id = `${objKeys[x]}`;
       keyLabel.appendChild(valueInput);
+      valueInput.textContent = txt;
     }
   }
 }
 
+// add the information to the detail section
+// based off the key/value pairs listed in the
+// (ToDo Lists)
 function setupToDo(arr, title){
   var listCt = arr[showIndex].list.length;
-  // var divCt = detailSection.getElementsByTagName('div').length;
   document.getElementById('titleName').textContent = title;
 
+  // If the AddNew div section has NOT been setup
+  // -- it adds in the div/input/button
   if(document.getElementById('addNewDetailTask') === null){
-    // console.log(`it doesn't exit -- gonna set it up`);
     var newItemSect = document.createElement('div');
     newItemSect.className = 'addNewToDo';
     detailHeader.appendChild(newItemSect);
@@ -204,10 +226,15 @@ function setupToDo(arr, title){
     btnAddNewToDo.id = 'addNewDetailTask';
     newItemSect.appendChild(btnAddNewToDo);
   } else {
+    // if the AddNew section already setup
+    // -- removes all the previous elements listed
     while(detailSection.childElementCount > 0) {
       detailSection.removeChild(detailSection.lastElementChild);
     }
   }
+  // Loops through the list length
+  // --adds in a Div with 2 boxes/paragraph
+  // -- setup for check/delete options
   for(var x = 0; x < listCt; x++){
     var itemDiv = document.createElement('div');
     itemDiv.className = `list_${x}`;
@@ -243,4 +270,35 @@ function addDivToDO(e){
   itemDelete.textContent = 'X';
   itemDelete.id = 'toDoDelete';
   itemDiv.appendChild(itemDelete);
+}
+
+function getTimeMinutes(str){
+  var txt = str.toLowerCase();
+  if(txt.search('h')>=0){
+    var t = txt.slice(0,txt.search('h'));
+    t = Number(t.trim(t));
+    t = t * 60;
+  }else if(txt.search('m')>=0){
+    t = txt.slice(0,txt.search('m'));
+    t = Number(t.trim(t));
+  } else if(txt.search('d')>=0){
+    t = txt.slice(0,txt.search('d'));
+    t = t * 1440;
+  } else{
+    t = Number(txt);
+  }
+  return t;
+}
+
+function returnTime(num){
+  if (num >= 1440){
+    var t = num/1440;
+    var len = `${t} day(s)`;
+  } else if (num >= 60){
+    t = num/60;
+    len = `${t} hours`;
+  } else {
+    len = `${t} min`;
+  }
+  return len;
 }
