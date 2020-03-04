@@ -204,7 +204,7 @@ main{
 
 
 #ExerciseTask{
-    background-color: lightgreen;
+    background-color: #91ee91;
     border: black 1px solid;
     border-radius: 5px;
     margin: px;
@@ -212,21 +212,21 @@ main{
 
 
 #MealsTask{
-    background-color: lightblue;
+    background-color: #add8e6;
     border: black 1px solid;
     border-radius: 5px;
     margin: 2px;
 }
 
 #ToDoTask{
-    background-color: lightpink;
+    background-color: #ffb6c1;
     border: black 1px solid;
     border-radius: 5px;
     margin: 2px;
 }
 
 #ActivityTask{
-    background-color: lavender;
+    background-color: #e6e6fa;
     border: black 1px solid;
     border-radius: 5px;
     margin: 2px;
