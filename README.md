@@ -33,5 +33,11 @@ Day | Accomplisments | Blockers
 - | `Created function to determine if User already exists in Users Array` | 
 **02/26** | `Updated README` | *Merging Issues*
 - | `Updated Requirements.md` |  
-- | `...` | 
+**02/27** | `Updated README` | *Merging Issues*
+- | `Debugging issue` |  
+- | `Created local storage function` | 
+- | `Added event listener function` |
+
+
+
 
