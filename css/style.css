@@ -210,8 +210,9 @@ main{
 
 
 #ExerciseTask{
+
+    background-color: #91ee91;
     font-family: 'Shadows Into Light';
-    background-color: lightgreen;
     border: black 1px solid;
     border-radius: 5px;
     margin: px;
@@ -219,24 +220,24 @@ main{
 
 
 #MealsTask{
+    background-color: #add8e6;
     font-family: 'Shadows Into Light';
-    background-color: lightblue;
     border: black 1px solid;
     border-radius: 5px;
     margin: 2px;
 }
 
 #ToDoTask{
+    background-color: #ffb6c1;
     font-family: 'Shadows Into Light';
-    background-color: lightpink;
     border: black 1px solid;
     border-radius: 5px;
     margin: 2px;
 }
 
 #ActivityTask{
+    background-color: #e6e6fa;
     font-family: 'Shadows Into Light';
-    background-color: lavender;
     border: black 1px solid;
     border-radius: 5px;
     margin: 2px;

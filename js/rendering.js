@@ -182,7 +182,8 @@ function chartGen() {
     type: 'pie',
     data: {
       datasets: [{
-        data: [userEx, userM, userTdo,userAct]
+        data: [userEx, userM, userTdo,userAct],
+        backgroundColor: ['#91ee91', '#add8e6', '#ffb6c1', '#e6e6fa']
       }],
       // Pie chart label colors
       labels: [
@@ -215,5 +216,5 @@ function goToDetail(e) {
   detailItem.push(cat);
   detailItem.push(itemTitle);
   localStorage.setItem('detailItem',JSON.stringify(detailItem));
-  if(cat !== "Activity"){window.location.href = 'detailPage.html';}
+  if(cat !== 'Activity'){window.location.href = 'detailPage.html';}
 }
