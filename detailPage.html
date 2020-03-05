@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="css/reset.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
         <link rel="stylesheet" href="css/styleDetail.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Bad+Script&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -23,10 +24,15 @@
         <main>
             <section id="detailSection">
                 <section id="detailedList">
-                    <!-- <div id="listHeader"> -->
-                        <h3>Category List</h3>
-                        <!-- <button>Add Item</button> -->
-                    <!-- </div> -->
+                    <div id= "detailCat">
+                        <h3 id="listHeader">Category List</h3>
+                        <!-- <label id="lblCat"></label> -->
+                        <select id="taskCat">
+                            <option value="Exercise">Exercise</option>
+                            <option value="Meals">Meal</option>
+                            <option value="ToDo">To Do List</option>
+                        </select>
+                    </div>
                     <div id="addNewItem">
                         <input id="enterNewItem" type="text" placeholder="new item">
                         <button id="addTask">+</button>
@@ -34,21 +40,19 @@
                     <ul id='categoryList'>
                         <!-- DOMit Team Assemble! -->
                     </ul>
+                    <button id="deleteTask">Delete Item</button>
                 </section>
-                <section id="detailedInfo">
+                <form id="detailedInfo">
+                    <div id="detailHeader">
+                        <h2 id = "titleName">Detailed Item</h2>
+                    </div>
                     <img id="detailPic" src="https://via.placeholder.com/150x150/" alt="placeholder">
-                    <h2 id = "titleName">Detailed Item</h2>
                     <div id="infoSection">
-
                     </div>
                     <button id="saveInfo">Save Info</button> 
-                    <!-- Section info based on Object properties -->
-                </section>
+                </form>
             </section>
         </main>
-        <!-- <footer>
-
-        </footer> -->
         <script src="js/app.js"></script>
         <script src="js/detailEvents.js"></script>
     </body>

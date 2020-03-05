@@ -4,6 +4,7 @@
         <title>Weekly Planner</title>
         <link rel="stylesheet" href="css/reset.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -20,6 +21,39 @@
             <!-- <img id="logo" src="https://via.placeholder.com/50x50/" alt="placeholder"> -->
         </header>
         <main>
+                <form id="addNewTask_Form">
+                    <h3>Add Task</h3>
+                    <!-- <div id="addNewSection"> -->
+                        <label>Choose a Category:</label>
+                        <select id="taskCategory" required>
+                            <option value=""></option>
+                            <option value="Exercise">Exercise</option>
+                            <option value="Meals">Meal</option>
+                            <option value="ToDo">To Do List</option>
+                            <option value="Activity">Activity</option>
+                        </select>
+                        <div id="timeOfDay_Dropdown">
+                            <label>Time of Day:</label>
+                            <select id="daytimeSelected">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    <!-- </div> -->
+                    <label>Enter task...<input id="taskEntered" type="text" required></label>    
+                    <fieldset id="daysTaskApplied">
+                        <input type="checkbox" id="day1_chkbx" value="day1"> <label for="day1">MON</label>
+                        <input type="checkbox" id="day2_chkbx" value="day2"> <label for="day2">TUE</label>
+                        <input type="checkbox" id="day3_chkbx" value="day3"> <label for="day3">WED</label>
+                        <input type="checkbox" id="day4_chkbx" value="day4"> <label for="day4">THUR</label>
+                        <input type="checkbox" id="day5_chkbx" value="day5"> <label for="day5">FRI</label>
+                        <input type="checkbox" id="day6_chkbx" value="day6"> <label for="day6">SAT</label>
+                        <input type="checkbox" id="day7_chkbx" value="day7"> <label for="day7">SUN</label>
+                    </fieldset>
+                    <a href="detailPage.html"><button id="detailButton">Add More Info</button></a>
+                    <button id="applyTask">Apply Event</button>
+                </form>
+
+
             <section id="weeklyDisplaySection">
                 <!-- <h2>Weekly Display</h2> -->
                 <div class="displayDay" id="day1"> <!-- could change id to Sunday, but keeping id with integer helps for the Stretch goal -->
@@ -72,40 +106,7 @@
                     <ul class="displayListDay" id="day7_evening"> </ul>
                 </div>
             </section>
-            <section id="formChartSection">
-                <form id="addNewTask_Form">
-                    <h3>Add Task</h3>
-                    <!-- <div id="addNewSection"> -->
-                        <label>Choose a Category:</label>
-                        <select id="taskCategory" required>
-                            <option value=""></option>
-                            <option value="Exercise">Exercise</option>
-                            <option value="Meals">Meal</option>
-                            <option value="ToDo">To Do List</option>
-                            <option value="Activity">Activity</option>
-                        </select>
-                        <div id="timeOfDay_Dropdown">
-                            <label>Time of Day:</label>
-                            <select id="daytimeSelected">
-                                <option value=""></option>
-                            </select>
-                        </div>
-                    <!-- </div> -->
-                    <label>Enter task...<input id="taskEntered" type="text" required></label>    
-                    <fieldset id="daysTaskApplied">
-                        <input type="checkbox" id="day1_chkbx" value="day1"> <label for="day1">MON</label>
-                        <input type="checkbox" id="day2_chkbx" value="day2"> <label for="day2">TUE</label>
-                        <input type="checkbox" id="day3_chkbx" value="day3"> <label for="day3">WED</label>
-                        <input type="checkbox" id="day4_chkbx" value="day4"> <label for="day4">THUR</label>
-                        <input type="checkbox" id="day5_chkbx" value="day5"> <label for="day5">FRI</label>
-                        <input type="checkbox" id="day6_chkbx" value="day6"> <label for="day6">SAT</label>
-                        <input type="checkbox" id="day7_chkbx" value="day7"> <label for="day7">SUN</label>
-                    </fieldset>
-                    <a href="detailPage.html"><button id="detailButton">Add More Info</button></a>
-                    <button id="applyTask">Apply Event</button>
-                </form>
-                <canvas id="myChart"></canvas>
-            </section>
+            <canvas id="myChart"></canvas>
         </main>
         <footer>
 
