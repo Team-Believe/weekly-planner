@@ -157,6 +157,7 @@ var userEx = 0;
 var userM = 0;
 var userTdo =0;
 var userAct = 0;
+var total = mainUsersArr[cIdx].Planner.length;
 
 function chartGen() {
 
@@ -171,6 +172,14 @@ function chartGen() {
     // userTdo.push(mainUsersArr[i].userToDo);
   }
 
+  var pMeal = Math.round ((userM/total) * 100);
+  var pUserEx = Math.round ((userEx/total) * 100);
+  var pUserTdo = Math.round ((userTdo/total) * 100);
+  var pUserAct = Math.round((userAct/total) * 100);
+  console.log(pMeal);
+  console.log(pUserEx);
+  console.log(pUserTdo);
+  console.log(pUserAct);
   console.log(userEx);
   console.log(userM);
   console.log(userTdo);
@@ -181,24 +190,67 @@ function chartGen() {
   new Chart(ctx, {
     type: 'pie',
     data: {
-      datasets: [{
-        data: [userEx, userM, userTdo,userAct],
-        backgroundColor: ['#91ee91', '#add8e6', '#ffb6c1', '#e6e6fa']
-      }],
-      // Pie chart label colors
       labels: [
         'Exercise',
         'Meals',
         'ToDo',
         'Activities'
-      ]
+      ],
+      datasets: [{
+        data: [pUserEx, pUserEx, pUserTdo, pUserAct],
+        backgroundColor: ['#91ee91', '#add8e6', '#ffb6c1', '#e6e6fa'],
+        borderWidth: 0.5 ,
+        borderColor: '#ddd'
+      }],
+    },
+    options: {
+      title: {
+        display: true,
+        text: '',
+        position: 'top',
+        fontSize: 16,
+        fontColor: '#111',
+        padding: 20
+      },
+      legend: {
+        display: true,
+        position: 'bottom',
+        labels: {
+          boxWidth: 20,
+          fontColor: '#111',
+          padding: 15
+        }
+      },
+      tooltips: {
+        enabled: false
+      },
+      plugins: {
+        datalabels: {
+          color: '#111',
+          textAlign: 'center',
+          font: {
+            lineHeight: 1.6
+          },
+          formatter: function(value, ctx) {
+            return ctx.chart.data.labels[ctx.dataIndex] + '\n' + value + '%';
+          }
+        }
+      }
     }
   });
+  // Pie chart label colors
+  // [
+  //   'Exercise',
+  //   'Meals',
+  //   'ToDo',
+  //   'Activities'
+  // ];
 }
+
+
 
 chartGen();
 renderPlanner();
-
 // Cassy's testing code below
 //*******************************
 //https://stackoverflow.com/questions/17788510/open-page-on-double-clicking-a-list-item
