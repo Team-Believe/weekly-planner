@@ -1,5 +1,3 @@
-
-
 html{
     max-width: 960;
     background-image: url(../images/paperTexture.jpg);
@@ -191,7 +189,7 @@ main{
     border: black 1px solid;
     width: 100%;
     height: initial;
-    background-color: ivory;
+    background-color:lemonchiffon;
 }
 
 .displyHeaderDay{
@@ -210,9 +208,8 @@ main{
 
 
 #ExerciseTask{
-
-    background-color: #91ee91;
     font-family: 'Shadows Into Light';
+    background-color: teal;
     border: black 1px solid;
     border-radius: 5px;
     margin: px;
@@ -220,24 +217,24 @@ main{
 
 
 #MealsTask{
-    background-color: #add8e6;
     font-family: 'Shadows Into Light';
+    background-color: coral;
     border: black 1px solid;
     border-radius: 5px;
     margin: 2px;
 }
 
 #ToDoTask{
-    background-color: #ffb6c1;
     font-family: 'Shadows Into Light';
+    background-color: yellow;
     border: black 1px solid;
     border-radius: 5px;
     margin: 2px;
 }
 
 #ActivityTask{
-    background-color: #e6e6fa;
     font-family: 'Shadows Into Light';
+    background-color: cornflowerblue;
     border: black 1px solid;
     border-radius: 5px;
     margin: 2px;
