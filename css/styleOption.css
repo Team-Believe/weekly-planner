@@ -13,14 +13,23 @@ header{
     margin-bottom: 15px;
     border-bottom: solid 1px black;
     background-color: rgba(9, 87, 87,.75);
+    text-align: left;
+    border-bottom: black 1px solid;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    /* position: fixed; */
+    /* top: 0;
+    left: 0;
+    z-index: 100; */
 }
 
-h1{
-    font-size: 30px;
-    text-align: left;
-    margin: auto 30px;
-    padding-top: 5px;
-}
+#headerWelcome{
+    font-family: 'Shadows Into Light';
+    text-align: center;
+    color: white;
+    padding: 5px;
+    font-size: 35px;
+}   
+
 #menuBtn {
     background-color: rgba(9, 87, 87,.40);
     color: white;
@@ -51,9 +60,7 @@ h1{
   }
   
   #menuList a:hover {background-color: #ddd;}
-  
   #menuDropdown:hover #menuList {display: block;}
-  
   #menuDropdown:hover #menuBtn {background-color:rgb(9, 87, 87);}/* Dropdown Button */
 
   #menuBtn {
@@ -87,73 +94,8 @@ h1{
   }
   
   #menuList a:hover {background-color: #ddd;}
-  
   #menuDropdown:hover #menuList {display: block;}
-  
   #menuDropdown:hover #menuBtn {background-color: rgb(9, 87, 87);}
-
-
-#headerWelcome{
-    font-family: 'Shadows Into Light';
-    text-align: center;
-    z-index: 2;
-    margin-left: 120px;
-    color: white;
-    padding: 10px;
-    font-size: 30px;
-}   
-/* .dropbtn {
-    background-color: purple;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-}
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #F1F1F1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-.dropdown-content a {
-    color: black;
-    padding: 16px 16px;
-    text-decoration: none;
-    display: block;
-}
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-.dropdown:hover .dropbtn {
-    background-color: purple;
-} */
-
-/* nav{
-    position: absolute;
-    width: 94.5%;
-    height: 20px;
-    top: 40px;
-}
-
-#navBarList{
-    display: inline-flex;
-    margin-left: 30px;
-}
-
-#navBarList li{
-    padding-right: 20px;
-    text-align: left;
-    width: fit-content;
-} */
 
 #logo{
     position: absolute;
@@ -171,6 +113,93 @@ main{
     text-align: center;
 }
 
+
+/* ==============
+FORM SECTION
+=====================*/
+#addNewTask_Form{
+    width: 65%;
+    font-family: 'Shadows Into Light';
+    font-size: 24px;
+    text-align: left;
+    align-self: auto;
+    border: black solid 1px;
+    background-color: lemonchiffon;
+    padding: 10PX;  
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+}
+
+#addNewTask_Form h3{
+    font-family: 'Shadows Into Light';
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: left;
+    padding-bottom: 10px;
+    /* width: 90%; */
+    /* margin-right: 30px;  */
+}
+
+#addNewSection{
+    display: block;
+    margin-left: 15px;
+    width: 50%;
+}
+
+
+/* dropdown Category Menu
+=====================*/
+#taskCategory{
+    width: 50%;
+    text-align: right;
+    font-size: 18px;
+    height: 30px;
+    margin: 10px;
+}
+
+#timeOfDay_Dropdown{
+    width: 100%;
+    display: none;
+}
+
+#daytimeSelected{
+    width: 50%;
+    text-align: right;
+    font-size: 20px;
+    height: 30px;
+    margin: 10px;
+}
+
+#taskEntered{
+    margin-bottom: 15px;
+    height: 30px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.dayCheckBox{
+    height: 15px;
+    width: 15px;
+    margin-right: 1px;
+}
+
+/* days of the week
+=====================*/
+#daysTaskApplied{
+    justify-content: space-evenly;
+    font-size: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* form buttons
+====================*/
+#detailButton{
+    margin-right: 80px;
+    font-size: 12px;
+
+}
 #weeklyDisplaySection{
     width: 96%;
     font-size: 20px;
@@ -203,13 +232,13 @@ main{
     margin: auto;
     min-height: 50px;
     padding: 4px 0px;
-    /* border: black solid 1px; */
+    border: black solid 1px;
 }
 
 
 #ExerciseTask{
     font-family: 'Shadows Into Light';
-    background-color: teal;
+    background-color: rgba(0, 128, 128, .5);
     border: black 1px solid;
     border-radius: 5px;
     margin: px;
@@ -218,7 +247,7 @@ main{
 
 #MealsTask{
     font-family: 'Shadows Into Light';
-    background-color: coral;
+    background-color: rgba(255, 127, 80, .75);
     border: black 1px solid;
     border-radius: 5px;
     margin: 2px;
@@ -226,7 +255,7 @@ main{
 
 #ToDoTask{
     font-family: 'Shadows Into Light';
-    background-color: yellow;
+    background-color: rgba(255, 255, 0,.75);
     border: black 1px solid;
     border-radius: 5px;
     margin: 2px;
@@ -234,7 +263,7 @@ main{
 
 #ActivityTask{
     font-family: 'Shadows Into Light';
-    background-color: cornflowerblue;
+    background-color: rgba(100, 149, 237, .75);
     border: black 1px solid;
     border-radius: 5px;
     margin: 2px;
@@ -249,81 +278,12 @@ main{
     display: inline-flex;
 }
 
-/* ==============
-FORM SECTION
-=====================*/
-#addNewTask_Form{
-    width: 55%;
-    font-family: 'Shadows Into Light';
-    font-size: 30px;
-    align-self: auto;
-    border: black solid 1px;
-    background-color: lemonchiffon;
-    padding: 10PX;  
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 15px;
-}
-
-#addNewTask_Form h3{
-    font-family: 'Shadows Into Light';
-    font-size: 30px;
-    text-align: left;
-    width: 90%;
-    margin-right: 30px; 
-}
 
 /* #addNewSection{
     width: 100%;
     margin-bottom: 10px;
 } */
 
-/* dropdown Category Menu
-=====================*/
-#taskCategory{
-    width: 100%;
-    text-align: right;
-    font-size: 18px;
-    height: 30px;
-    margin: 5px;
-}
-
-#daytimeSelected{
-    width: 50%;
-    text-align: right;
-    font-size: 22px;
-    height: 30px;
-    margin: 5px;
-}
-
-#timeOfDay_Dropdown{
-    width: 100%;
-    display: none;
-}
-
-#taskEntered{
-    margin-bottom: 15px;
-    height: 30px;
-    font-size: 18px;
-    width: 100%;
-}
-
-/* days of the week
-=====================*/
-#daysTaskApplied{
-    justify-content: space-evenly;
-    font-size: 20px;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-/* form buttons
-====================*/
-#detailButton{
-    margin-right: 80px;
-    font-size: 12px;
-
-}
 
 /* ==============
  CHART SECTION

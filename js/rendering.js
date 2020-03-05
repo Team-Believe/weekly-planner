@@ -111,6 +111,7 @@ function dayDropdownList(e){
 function findExistingTask(task, category){
   var taskExists = false;
   console.log(category);
+
   // Looks at the Exercise Category & Array
   if (category === 'Exercise'){
     for(var i = 0; i< mainUsersArr[cIdx].Exercise.length; i++){
@@ -146,7 +147,6 @@ function findExistingTask(task, category){
     if(!taskExists){
       new ToDo(task);
       mainUsersArr[cIdx].ToDo.push(userToDo[userToDo.length-1]);
-
     }
   }
 }
