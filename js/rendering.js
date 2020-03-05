@@ -270,3 +270,5 @@ function goToDetail(e) {
   localStorage.setItem('detailItem',JSON.stringify(detailItem));
   if(cat !== 'Activity'){window.location.href = 'detailPage.html';}
 }
+
+var plannerSection = document.getElementById('weeklyDisplaySection');

@@ -23,18 +23,18 @@ function Meals(name) {
   this.title = name;
   this.ingredients = [];
   this.prepDirections = [];
-  this.servings = 0;
-  this.prepTime = 0;
-  this.cookedTime = 0;
+  this.servings = '';
+  this.prepTime = '';
+  this.cookedTime = '';
   userMeals.push(this);
 }
 //constructor for users exercise
 function Exercise(name) {
   this.title = name;
-  this.duration = 0;
+  this.duration = '';
   this.typeOfExcercise = '';
-  this.reps = 0;
-  this.calsToBurn = 0;
+  this.reps = '';
+  this.calsToBurn = '';
   userExercise.push(this);
 }
 
@@ -42,6 +42,7 @@ function Exercise(name) {
 function ToDo(name) {
   this.title = name;
   this.list = [];
+  this.checked = [];
   userToDo.push(this);
 }
 //contructor for users set Planner
