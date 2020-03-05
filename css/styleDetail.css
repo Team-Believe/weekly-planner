@@ -60,10 +60,18 @@ h1{
     margin-left: 5%;
     padding: 1%;
     width: 80%;
+    color: black;
 }
 
 #categoryList li:hover{
     background-color: rgb(210, 209, 209);
+    color: black;
+}
+
+
+#categoryList li::selection{
+    background-color:rgba(4, 148, 148,.5);
+    color: white;
 }
 
 #detailedInfo{
@@ -81,13 +89,11 @@ h1{
 #infoSection{
     margin-left: 2%;
     display: grid;
-    /* width: 60%; */
 }
 
 
 #detailPic{
     float: right;
-    /* margin-right: 10px; */
 }
 
 #saveInfo{
@@ -101,11 +107,6 @@ h1{
     background-color: teal;
     color: white;
 }
-
-/* #infoSection input{
-    margin-top: 1%;
-    margin-left:2%;
-} */
 
 label{
     width: 120px;
@@ -122,14 +123,14 @@ div[class*="list_"]{
     border: springgreen 2px solid;
     display: inline-flex;
     width: 80%;
-    /* padding: 2px; */
-
 }
 
-#toDoChkBox, #toDoDelete{
+#toDoDelete{
     height: 20px;
     width: 20px;
-    border: black 1px solid;
+    padding: auto;
+    padding-right: 4px;
+    /* border: black 1px solid; */
     margin: 2px;
 }
 
@@ -149,4 +150,29 @@ div p{
 
 #lblCat{
     width: 100%;
+}
+
+input{
+    min-width: 60px;
+    
+    /* max-width: 80%; */
+    min-height: 15px;
+    height: auto;
+}
+
+#ingredients{
+    display: block;
+    width: 80%;
+    
+}
+
+textarea{
+    width: 100%;
+    min-height: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+input[class*="ckbox"]{
+    width: 2%;
 }
