@@ -58,7 +58,7 @@ function TaskByDay (Day, category, Task, Time){
 function findUser(name) {
   var existingUser = false;
   for (var i = 0; i < mainUsersArr.length; i++) {
-    if (name === mainUsersArr[i].userName) {
+    if (name.toLowerCase() === mainUsersArr[i].userName.toLowerCase()) {
       existingUser = true;
       localStorage.setItem('CurrentUser', JSON.stringify(i));
       break;

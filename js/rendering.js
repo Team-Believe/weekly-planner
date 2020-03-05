@@ -114,7 +114,7 @@ function findExistingTask(task, category){
   // Looks at the Exercise Category & Array
   if (category === 'Exercise'){
     for(var i = 0; i< mainUsersArr[cIdx].Exercise.length; i++){
-      if(mainUsersArr[cIdx].Exercise[i].title === task){
+      if(mainUsersArr[cIdx].Exercise[i].title.toLowerCase() === task.toLowerCase()){
         console.log('task exists');
         taskExists = true;
       }
@@ -127,7 +127,7 @@ function findExistingTask(task, category){
   // Looks at the Meals Category & Array
   if (category === 'Meals'){
     for(i = 0; i< mainUsersArr[cIdx].Meals.length; i++){
-      if(mainUsersArr[cIdx].Meals[i].title === task){
+      if(mainUsersArr[cIdx].Meals[i].title.toLowerCase() === task.toLowerCase()){
         taskExists = true;
       }
     }
@@ -139,7 +139,7 @@ function findExistingTask(task, category){
   // Looks at the ToDo Category & Array
   if (category === 'ToDo'){
     for(i = 0; i< mainUsersArr[cIdx].ToDo.length; i++){
-      if(mainUsersArr[cIdx].ToDo[i].title === task){
+      if(mainUsersArr[cIdx].ToDo[i].title.toLowerCase() === task.toLowerCase()){
         taskExists = true;
       }
     }
