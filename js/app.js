@@ -42,6 +42,7 @@ function Exercise(name) {
 function ToDo(name) {
   this.title = name;
   this.list = [];
+  this.checked = [];
   userToDo.push(this);
 }
 //contructor for users set Planner
