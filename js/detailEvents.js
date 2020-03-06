@@ -9,18 +9,19 @@ var detailHeader = document.getElementById('detailHeader');
 var btnAddNewToDo;
 var cat = detailedItem[0];
 var title = detailedItem[1];
-var showIndex = detailedItem[2];
+var showIndex;
 
 headerName.textContent = `${mainUsersArr[cIdx].userName}'s ${cat} Items`;
 document.getElementById('taskCat').value = cat;
 
 // Sets the Search Array based on the category
 // saved in local storage
+console.log(cat);
 switch(cat){
 case 'Meals':
+  console.log(cat);
   var SearchArr = mainUsersArr[cIdx].Meals;
   renderCatList(SearchArr, title);
-
   renderDetailItem(SearchArr,title);
   break;
 case 'Exercise':
