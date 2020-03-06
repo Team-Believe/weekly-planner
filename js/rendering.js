@@ -59,6 +59,7 @@ function findDaysApplied(e){
     }
   }
   toLocalStorage();
+  chartGen(); 
   applyTask.reset();
   dropDownSection.style.display = 'none';
 }
@@ -92,7 +93,7 @@ function dayDropdownList(e){
     timeDropdown.removeChild(timeDropdown.lastElementChild);
   }
 
-  if(cat === 'Meals'){
+  if(cat === 'Meal'){
     dropDownSection.style.display = 'inline-flex';
     for(var i = 0; i<mealArr.length; i++){
       var selection = document.createElement('option');
@@ -122,31 +123,31 @@ function dayDropdownList(e){
 function showLogoImage(){
 
   var cat = taskCategory.value;
-
+  
   var ex = document.getElementById('imgExercise');
-    ex.style.display = 'none';
+  ex.style.display = 'none';
   var ml= document.getElementById('imgMeal');
-    ml.style.display = 'none';
+  ml.style.display = 'none';
   var act = document.getElementById('imgActivity');
-    act.style.display = 'none';
+  act.style.display = 'none';
   var td = document.getElementById('imgToDo');
-    td.style.display = 'none';
+  td.style.display = 'none';
 
   switch (cat){
-    case 'Meals':
-      ml.style.display = 'inline';
-      break;
-    case 'Exercise':
-      ex.style.display = 'inline';
-      break;
-    case 'ToDo':
-      td.style.display = 'inline';
-      break;
-    case 'Activity':
-      act.style.display = 'inline';
-      break;
-    default:
-      break;
+  case 'Meals':
+    ml.style.display = 'inline';
+    break; 
+  case 'Exercise':
+    ex.style.display = 'inline';
+    break;
+  case 'ToDo':
+    td.style.display = 'inline';
+    break;
+  case 'Activity':
+    act.style.display = 'inline';
+    break;
+  default:
+    break;
   }
 }
 
@@ -222,7 +223,7 @@ function chartGen() {
     data: {
       labels: [
         'Exercise',
-        'Meals',
+        'Meal',
         'ToDo',
         'Activities'
       ],
@@ -236,7 +237,7 @@ function chartGen() {
     options: {
       title: {
         display: true,
-        text: '',
+        text: 'Activity Pie Chart',
         position: 'top',
         fontSize: 16,
         fontColor: '#111',
@@ -268,13 +269,7 @@ function chartGen() {
       }
     }
   });
-  // Pie chart label colors
-  // [
-  //   'Exercise',
-  //   'Meals',
-  //   'ToDo',
-  //   'Activities'
-  // ];
+
 }
 
 
