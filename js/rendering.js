@@ -19,12 +19,12 @@ function renderPlanner(){
       mainUsersArr[cIdx].Planner[i].time);
   }
   if(mainUsersArr[cIdx].Planner.length === 0){
-   var chart =  document.getElementById('myChart');
-   chart.style.display = 'none';
+    var chart =  document.getElementById('myChart');
+    chart.style.display = 'none';
   } else {
     chart =  document.getElementById('myChart');
-   chart.style.display = 'block';
-   chartGen(); 
+    chart.style.display = 'block';
+    chartGen(); 
   }
   
 }
@@ -125,29 +125,29 @@ function showLogoImage(){
   var cat = taskCategory.value;
 
   var ex = document.getElementById('imgExercise');
-    ex.style.display = 'none';
+  ex.style.display = 'none';
   var ml= document.getElementById('imgMeal');
-    ml.style.display = 'none';
+  ml.style.display = 'none';
   var act = document.getElementById('imgActivity');
-    act.style.display = 'none';
+  act.style.display = 'none';
   var td = document.getElementById('imgToDo');
-    td.style.display = 'none';
+  td.style.display = 'none';
 
   switch (cat){
-    case 'Meals':
-      ml.style.display = 'inline';
-      break;
-    case 'Exercise':
-      ex.style.display = 'inline';
-      break;
-    case 'ToDo':
-      td.style.display = 'inline';
-      break;
-    case 'Activity':
-      act.style.display = 'inline';
-      break;
-    default:
-      break;
+  case 'Meals':
+    ml.style.display = 'inline';
+    break;
+  case 'Exercise':
+    ex.style.display = 'inline';
+    break;
+  case 'ToDo':
+    td.style.display = 'inline';
+    break;
+  case 'Activity':
+    act.style.display = 'inline';
+    break;
+  default:
+    break;
   }
 }
 
@@ -251,7 +251,7 @@ function chartGen() {
     options: {
       title: {
         display: true,
-        text: '',
+        text: 'Activity Pie Chart',
         position: 'top',
         fontSize: 16,
         fontColor: '#111',
@@ -283,13 +283,7 @@ function chartGen() {
       }
     }
   });
-  // Pie chart label colors
-  // [
-  //   'Exercise',
-  //   'Meals',
-  //   'ToDo',
-  //   'Activities'
-  // ];
+
 }
 
 
