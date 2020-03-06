@@ -1,0 +1,143 @@
+/* html{
+  max-width: 960;
+  background-image: url(../images/paperTexture.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+header{
+  display: inline-flex;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 30px;
+  border-bottom: solid 1px black;
+  background-color: rgba(9, 87, 87,.75);
+}
+
+h1{
+  margin-top: 0;
+  display: inline-flex;
+  font-size: 30px;
+  text-align: center;
+  margin: auto auto;
+  padding-top: 5px;
+}
+
+#headerWelcome{
+  font-family: 'Shadows Into Light';
+  text-align: center;
+  z-index: 2;
+  color: white;
+  padding: 10px;
+  font-size: 30px;
+} 
+
+.dropbtn {
+  background-color: rgba(9, 87, 87,.40);;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color:rgb(9, 87, 87);} */
+ /* End of header section and nav bar */
+
+#logo{
+  position: absolute;
+  top: 5px;
+  left: 95%;
+  margin: auto 0px;
+  border: 1PX black solid;
+}
+
+p {
+  font-size: 22px;
+  margin: 5px;
+}
+
+span {
+  margin: 5px;
+  font-size: 22px;
+  color: red;
+}
+
+main{
+  text-align: center;
+}
+
+button {
+  margin-top: 1%;
+  float: right;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(9, 87, 87);;
+  width: 150px;
+  height: 50px;
+}
+
+.displayListDay{
+  width: 96%;
+  margin: auto;
+  min-height: 50px;
+  padding: 4px 0px;
+}
+
+/* https://www.w3schools.com/howto/howto_css_dropdown.asp */
+
+h3 {
+  font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 3%;
+    color: rgb(6, 55, 55);
+    font-family: 'Bad Script', cursive;
+    /* margin-right: 120px; */
+    width: 75%;
+}
+
+#detailSection{
+  width: 100%;
+  /* border: 1px black solid; */
+  display: inline-flex;
+  text-align: left;
+  margin: 1%;
+}
+
+/*LEFT: LIST SECTION*/
+#detailedList, #detailedInformationSection{
+  width: 30%;
+  background-color: rgba(245, 245, 245,.75);
+  border: 1px solid black;
+  padding: 15px;
+  text-align: left;
+  margin-right: 1%;
+}
+
+
+

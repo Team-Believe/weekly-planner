@@ -1,50 +1,44 @@
 /* https://www.w3schools.com/howto/howto_css_dropdown.asp */
 
-header{
-    display: inline-flex;
-    height: 50px;
-}   
-
-h1{
-    margin-top: 0;
-    display: inline-flex;
+main{
+    padding: 20px;
 }
 
-#headerWelcome{
-    z-index: 2;
-    margin-left: 120px;
-    color: white;
-    padding: 10px;
-    font-size: 30px;
-}
 
-/**/
-#detailSection{
-    width: 100%;
-    /* border: 1px black solid; */
-    display: inline-flex;
-    text-align: left;
-    margin: 1%;
-}
-/*LEFT: LIST SECTION*/
+/**************************
+LEFT: LIST SECTION
+***************************/
 #detailedList{
-    width: 30%;
-    background-color: rgba(245, 245, 245,.75);
+    width: fit-content;
+    background-color: rgba(255, 250, 205,.75);
     border: 1px solid black;
     padding: 15px;
     text-align: left;
-    margin-right: 1%;
+    float: left;
+    box-shadow: 0px 8px 16px 0px rgba(1, 53, 53, 0.25);
 }
+
+#detailCat{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
 
 #listHeader{
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 3%;
     color: rgb(6, 55, 55);
     font-family: 'Bad Script', cursive;
-    /* margin-right: 120px; */
-    width: 75%;
+    float: left;
+    width: 100%;
 }
+
+#taskCat{
+    width: 25%;
+    float: right;
+    margin: 0px;
+}
+
 
 #addNewItem{
     display: inline-flex;
@@ -54,6 +48,11 @@ h1{
 
 #enterNewItem{
     width: 75%;
+}
+
+#categoryList{
+    min-height: 200px;
+    max-height: fit-content;
 }
 
 #categoryList li{
@@ -68,17 +67,35 @@ h1{
     color: black;
 }
 
-
 #categoryList li::selection{
-    background-color:rgba(4, 148, 148,.5);
+    background-color:blue;
     color: white;
 }
 
+#deleteTask{
+    font-size: 14px;
+    padding: 5px;
+    margin-top: 20px;
+    font-weight: bolder;
+}
+
+#deleteTask:hover{
+    background-color: teal;
+    color: white;
+}
+
+
+/**************************
+RIGHT: DETAIL SECTION
+***************************/
 #detailedInfo{
-    width: 50%;
+    width: 60%;
     border: 1px solid black;
     padding: 20px;
-    background-color: rgba(245, 245, 245,.75)
+    background-color: rgba(255, 250, 205,.75);
+    float: right;
+    margin-right: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(1, 53, 53, 0.25);
 }
 
 #detailedInfo h2{
@@ -88,12 +105,16 @@ h1{
 
 #infoSection{
     margin-left: 2%;
+    width: 75%;
     display: grid;
 }
 
-
 #detailPic{
-    float: right;
+    text-align: right;
+    position: fixed;
+    left: 84.5%;
+    top: 100px;
+
 }
 
 #saveInfo{
@@ -112,18 +133,16 @@ label{
     width: 120px;
     text-align: right;
     display: inline-flex;
+    padding: 3px;
 }
 
-input{
-    width: 300px;
-    text-align: left;
-}
 
 div[class*="list_"]{
-    border: springgreen 2px solid;
+    /* border: springgreen 2px solid; */
     display: inline-flex;
     width: 80%;
 }
+
 
 #toDoDelete{
     height: 20px;
@@ -132,6 +151,7 @@ div[class*="list_"]{
     padding-right: 4px;
     /* border: black 1px solid; */
     margin: 2px;
+    z-index: 1;
 }
 
 .addNewToDo{
@@ -152,27 +172,42 @@ div p{
     width: 100%;
 }
 
-input{
-    min-width: 60px;
-    
-    /* max-width: 80%; */
-    min-height: 15px;
-    height: auto;
-}
-
 #ingredients{
     display: block;
     width: 80%;
-    
+    margin-right: 20%;
 }
+
 
 textarea{
     width: 100%;
-    min-height: 15px;
     font-family: Arial, Helvetica, sans-serif;
+    height: fit-content;
     overflow: hidden;
 }
 
-input[class*="ckbox"]{
-    width: 2%;
+.arr_ingredients{
+    width: 70%;
 }
+
+input[class*="ckbox"]{
+    width: 20px;
+    height: 15px;
+}
+
+#servings{
+    width: 25px;
+    margin-left: 15px;
+}
+
+#prepTime{
+    width: 50px;
+    margin-left: 7px;
+}
+
+#cookedTime{
+    width: 70px;
+    margin-left: 7px;
+}
+
+

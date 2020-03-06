@@ -18,7 +18,18 @@ function renderPlanner(){
       mainUsersArr[cIdx].Planner[i].task,
       mainUsersArr[cIdx].Planner[i].time);
   }
+  if(mainUsersArr[cIdx].Planner.length === 0){
+   var chart =  document.getElementById('myChart');
+   chart.style.display = 'none';
+  } else {
+    chart =  document.getElementById('myChart');
+   chart.style.display = 'block';
+   chartGen(); 
+  }
+  
 }
+
+showLogoImage();
 
 //EVENT: Apply li to the Weekly Planner based on Days checked
 // - the time of day selected will place in the corresponding ul
@@ -90,8 +101,10 @@ function dayDropdownList(e){
       selection.value = valueArr[i];
       timeDropdown.appendChild(selection);
     }
+    document.getElementById('imgExercise').style.display = 'inline';
   } else if (cat === ''){
     dropDownSection.style.display = 'none';
+    showLogoImage()
     while(timeDropdown.childElementCount > 0) {
       timeDropdown.removeChild(timeDropdown.lastElementChild);
     }
@@ -103,6 +116,38 @@ function dayDropdownList(e){
       selection.value = valueArr[j];
       timeDropdown.appendChild(selection);
     }
+    showLogoImage();
+  }
+}
+
+function showLogoImage(){
+
+  var cat = taskCategory.value;
+
+  var ex = document.getElementById('imgExercise');
+    ex.style.display = 'none';
+  var ml= document.getElementById('imgMeal');
+    ml.style.display = 'none';
+  var act = document.getElementById('imgActivity');
+    act.style.display = 'none';
+  var td = document.getElementById('imgToDo');
+    td.style.display = 'none';
+
+  switch (cat){
+    case 'Meals':
+      ml.style.display = 'inline';
+      break;
+    case 'Exercise':
+      ex.style.display = 'inline';
+      break;
+    case 'ToDo':
+      td.style.display = 'inline';
+      break;
+    case 'Activity':
+      act.style.display = 'inline';
+      break;
+    default:
+      break;
   }
 }
 
@@ -111,10 +156,11 @@ function dayDropdownList(e){
 function findExistingTask(task, category){
   var taskExists = false;
   console.log(category);
+
   // Looks at the Exercise Category & Array
   if (category === 'Exercise'){
     for(var i = 0; i< mainUsersArr[cIdx].Exercise.length; i++){
-      if(mainUsersArr[cIdx].Exercise[i].title === task){
+      if(mainUsersArr[cIdx].Exercise[i].title.toLowerCase() === task.toLowerCase()){
         console.log('task exists');
         taskExists = true;
       }
@@ -127,7 +173,7 @@ function findExistingTask(task, category){
   // Looks at the Meals Category & Array
   if (category === 'Meals'){
     for(i = 0; i< mainUsersArr[cIdx].Meals.length; i++){
-      if(mainUsersArr[cIdx].Meals[i].title === task){
+      if(mainUsersArr[cIdx].Meals[i].title.toLowerCase() === task.toLowerCase()){
         taskExists = true;
       }
     }
@@ -139,14 +185,13 @@ function findExistingTask(task, category){
   // Looks at the ToDo Category & Array
   if (category === 'ToDo'){
     for(i = 0; i< mainUsersArr[cIdx].ToDo.length; i++){
-      if(mainUsersArr[cIdx].ToDo[i].title === task){
+      if(mainUsersArr[cIdx].ToDo[i].title.toLowerCase() === task.toLowerCase()){
         taskExists = true;
       }
     }
     if(!taskExists){
       new ToDo(task);
       mainUsersArr[cIdx].ToDo.push(userToDo[userToDo.length-1]);
-
     }
   }
 }
@@ -197,8 +242,8 @@ function chartGen() {
         'Activities'
       ],
       datasets: [{
-        data: [pUserEx, pUserEx, pUserTdo, pUserAct],
-        backgroundColor: ['#91ee91', '#add8e6', '#ffb6c1', '#e6e6fa'],
+        data: [pUserEx, pMeal, pUserTdo, pUserAct],
+        backgroundColor: ['#00808080', '#ff7f50bf', '#ffff00bf', '#6495edbf'],
         borderWidth: 0.5 ,
         borderColor: '#ddd'
       }],
@@ -249,7 +294,7 @@ function chartGen() {
 
 
 
-chartGen();
+// chartGen();
 renderPlanner();
 // Cassy's testing code below
 //*******************************
