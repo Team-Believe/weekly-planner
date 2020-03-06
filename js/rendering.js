@@ -18,7 +18,18 @@ function renderPlanner(){
       mainUsersArr[cIdx].Planner[i].task,
       mainUsersArr[cIdx].Planner[i].time);
   }
+  if(mainUsersArr[cIdx].Planner.length === 0){
+   var chart =  document.getElementById('myChart');
+   chart.style.display = 'none';
+  } else {
+    chart =  document.getElementById('myChart');
+    chart.style.display = 'block';
+    chartGen(); 
+  }
+  
 }
+
+showLogoImage();
 
 //EVENT: Apply li to the Weekly Planner based on Days checked
 // - the time of day selected will place in the corresponding ul
@@ -47,7 +58,6 @@ function findDaysApplied(e){
       appendTask(`day${x}`,category, taskEntered, timeOfDay);
     }
   }
-  console.log(mainUsersArr[cIdx].Exercise);
   toLocalStorage();
   applyTask.reset();
   dropDownSection.style.display = 'none';
@@ -82,7 +92,7 @@ function dayDropdownList(e){
     timeDropdown.removeChild(timeDropdown.lastElementChild);
   }
 
-  if(cat === 'Meals'){
+  if(cat === 'Meal'){
     dropDownSection.style.display = 'inline-flex';
     for(var i = 0; i<mealArr.length; i++){
       var selection = document.createElement('option');
@@ -90,8 +100,10 @@ function dayDropdownList(e){
       selection.value = valueArr[i];
       timeDropdown.appendChild(selection);
     }
+    document.getElementById('imgExercise').style.display = 'inline';
   } else if (cat === ''){
     dropDownSection.style.display = 'none';
+    showLogoImage()
     while(timeDropdown.childElementCount > 0) {
       timeDropdown.removeChild(timeDropdown.lastElementChild);
     }
@@ -103,6 +115,38 @@ function dayDropdownList(e){
       selection.value = valueArr[j];
       timeDropdown.appendChild(selection);
     }
+    showLogoImage();
+  }
+}
+
+function showLogoImage(){
+
+  var cat = taskCategory.value;
+  
+  var ex = document.getElementById('imgExercise');
+  ex.style.display = 'none';
+  var ml= document.getElementById('imgMeal');
+  ml.style.display = 'none';
+  var act = document.getElementById('imgActivity');
+  act.style.display = 'none';
+  var td = document.getElementById('imgToDo');
+  td.style.display = 'none';
+
+  switch (cat){
+  case 'Meals':
+    ml.style.display = 'inline';
+    break; 
+  case 'Exercise':
+    ex.style.display = 'inline';
+    break;
+  case 'ToDo':
+    td.style.display = 'inline';
+    break;
+  case 'Activity':
+    act.style.display = 'inline';
+    break;
+  default:
+    break;
   }
 }
 
@@ -110,12 +154,11 @@ function dayDropdownList(e){
 // function to find if task exists.
 function findExistingTask(task, category){
   var taskExists = false;
-  console.log(category);
+
   // Looks at the Exercise Category & Array
   if (category === 'Exercise'){
     for(var i = 0; i< mainUsersArr[cIdx].Exercise.length; i++){
-      if(mainUsersArr[cIdx].Exercise[i].title === task){
-        console.log('task exists');
+      if(mainUsersArr[cIdx].Exercise[i].title.toLowerCase() === task.toLowerCase()){
         taskExists = true;
       }
     }
@@ -125,9 +168,9 @@ function findExistingTask(task, category){
     }
   }
   // Looks at the Meals Category & Array
-  if (category === 'Meals'){
+  if (category === 'Meal'){
     for(i = 0; i< mainUsersArr[cIdx].Meals.length; i++){
-      if(mainUsersArr[cIdx].Meals[i].title === task){
+      if(mainUsersArr[cIdx].Meals[i].title.toLowerCase() === task.toLowerCase()){
         taskExists = true;
       }
     }
@@ -139,14 +182,13 @@ function findExistingTask(task, category){
   // Looks at the ToDo Category & Array
   if (category === 'ToDo'){
     for(i = 0; i< mainUsersArr[cIdx].ToDo.length; i++){
-      if(mainUsersArr[cIdx].ToDo[i].title === task){
+      if(mainUsersArr[cIdx].ToDo[i].title.toLowerCase() === task.toLowerCase()){
         taskExists = true;
       }
     }
     if(!taskExists){
       new ToDo(task);
       mainUsersArr[cIdx].ToDo.push(userToDo[userToDo.length-1]);
-
     }
   }
 }
@@ -157,47 +199,82 @@ var userEx = 0;
 var userM = 0;
 var userTdo =0;
 var userAct = 0;
+var total = mainUsersArr[cIdx].Planner.length;
 
 function chartGen() {
 
   for(var i = 0; i < mainUsersArr[cIdx].Planner.length; i++){
     var lookupCat = mainUsersArr[cIdx].Planner[i].category;
-    if(lookupCat === 'Meals'){userM ++;}
+    if(lookupCat === 'Meal'){userM ++;}
     if(lookupCat === 'Exercise'){userEx ++;}
     if(lookupCat === 'Activity'){userAct ++;}
     if(lookupCat === 'ToDo'){userTdo ++;}
-    // userEx.push(mainUsersArr[i].userExercise);
-    // userM.push(mainUsersArr[i].userMeals);
-    // userTdo.push(mainUsersArr[i].userToDo);
   }
 
-  console.log(userEx);
-  console.log(userM);
-  console.log(userTdo);
-  console.log(userAct);
-
+  var pMeal = Math.round ((userM/total) * 100);
+  var pUserEx = Math.round ((userEx/total) * 100);
+  var pUserTdo = Math.round ((userTdo/total) * 100);
+  var pUserAct = Math.round((userAct/total) * 100);
   var ctx = document.getElementById('myChart').getContext('2d');
 
   new Chart(ctx, {
     type: 'pie',
     data: {
-      datasets: [{
-        data: [userEx, userM, userTdo,userAct]
-      }],
-      // Pie chart label colors
       labels: [
         'Exercise',
-        'Meals',
+        'Meal',
         'ToDo',
         'Activities'
-      ]
+      ],
+      datasets: [{
+        data: [pUserEx, pMeal, pUserTdo, pUserAct],
+        backgroundColor: ['#00808080', '#ff7f50bf', '#ffff00bf', '#6495edbf'],
+        borderWidth: 0.5 ,
+        borderColor: '#ddd'
+      }],
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Activity Pie Chart',
+        position: 'top',
+        fontSize: 16,
+        fontColor: '#111',
+        padding: 20
+      },
+      legend: {
+        display: true,
+        position: 'bottom',
+        labels: {
+          boxWidth: 20,
+          fontColor: '#111',
+          padding: 15
+        }
+      },
+      tooltips: {
+        enabled: false
+      },
+      plugins: {
+        datalabels: {
+          color: '#111',
+          textAlign: 'center',
+          font: {
+            lineHeight: 1.6
+          },
+          formatter: function(value, ctx) {
+            return ctx.chart.data.labels[ctx.dataIndex] + '\n' + value + '%';
+          }
+        }
+      }
     }
   });
+
 }
 
-chartGen();
-renderPlanner();
 
+
+// chartGen();
+renderPlanner();
 // Cassy's testing code below
 //*******************************
 //https://stackoverflow.com/questions/17788510/open-page-on-double-clicking-a-list-item
@@ -215,5 +292,7 @@ function goToDetail(e) {
   detailItem.push(cat);
   detailItem.push(itemTitle);
   localStorage.setItem('detailItem',JSON.stringify(detailItem));
-  if(cat !== "Activity"){window.location.href = 'detailPage.html';}
+  if(cat !== 'Activity'){window.location.href = 'detailPage.html';}
 }
+
+var plannerSection = document.getElementById('weeklyDisplaySection');

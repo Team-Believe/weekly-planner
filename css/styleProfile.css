@@ -1,0 +1,72 @@
+#logo{
+  position: absolute;
+  top: 5px;
+  left: 95%;
+  margin: auto 0px;
+  border: 1PX black solid;
+}
+
+p {
+  font-size: 22px;
+  margin: 5px;
+}
+
+span {
+  margin: 5px;
+  font-size: 22px;
+  color: red;
+}
+
+main{
+  text-align: center;
+}
+
+button {
+  margin-top: 1%;
+  float: right;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(9, 87, 87);;
+  width: 150px;
+  height: 50px;
+}
+
+.displayListDay{
+  width: 96%;
+  margin: auto;
+  min-height: 50px;
+  padding: 4px 0px;
+}
+
+/* https://www.w3schools.com/howto/howto_css_dropdown.asp */
+
+h3 {
+  font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 3%;
+    color: rgb(6, 55, 55);
+    font-family: 'Bad Script', cursive;
+    /* margin-right: 120px; */
+    width: 75%;
+}
+
+#detailSection{
+  width: 100%;
+  /* border: 1px black solid; */
+  display: inline-flex;
+  text-align: left;
+  margin: 1%;
+}
+
+/*LEFT: LIST SECTION*/
+#detailedList, #detailedInformationSection{
+  width: 30%;
+  background-color: rgba(245, 245, 245,.75);
+  border: 1px solid black;
+  padding: 15px;
+  text-align: left;
+  margin-right: 1%;
+}
+
+
+

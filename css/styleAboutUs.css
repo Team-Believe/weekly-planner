@@ -1,25 +1,10 @@
-html {
-    background-image: url(../images/paperTexture.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
-header {
-background-color: #FFC5A5;
-}
-
-h1 {
-    text-align: center;
-    font-family: 'Shadows Into Light';
-    font-size: 45px;
-}
 #groupDisplaySection{
     width: 96%;
     text-align: center;
     display: inline-flex;
     min-height: 500px;
     max-height: fit-content;
-    /* height: 500px; */
     margin-bottom: 20px;
     max-height: fit-content;
     justify-content: space-between;
@@ -28,9 +13,10 @@ h1 {
 .memberSection{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border: black 1px solid;
-    width: 300px;
-    height: initial;
-    background-color: #B37656
+    width: 320px;
+    height: 600px;
+    background-color: #B37656;
+    padding: 10px;
 }
 
 .memberName{
@@ -38,7 +24,7 @@ h1 {
     font-size: 35px;
     background-color: #44B3AE;
     padding: 4px 0px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .memberPic{
@@ -46,14 +32,17 @@ h1 {
     border: black solid 1px;
 }
 
-.grow:hover
+#grow:hover
 {
-        -webkit-transform: scale(1.3);
+        -webkit-transform: scale(1.0);
         -ms-transform: scale(1.3);
-        transform: scale(1.3);
+        transform: scale(1.1);
 }
 
-footer {
-    background-color: #FFC5A5;
-    }
-    
+p{
+    margin-top: 20px;
+    font-size: 17px;
+}
+main{
+    text-align: center;
+}
