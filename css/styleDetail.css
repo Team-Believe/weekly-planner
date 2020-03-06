@@ -4,24 +4,41 @@ main{
     padding: 20px;
 }
 
-/*LEFT: LIST SECTION*/
+
+/**************************
+LEFT: LIST SECTION
+***************************/
 #detailedList{
-    width: 30%;
-    background-color: rgba(245, 245, 245,.75);
+    width: fit-content;
+    background-color: rgba(255, 250, 205,.75);
     border: 1px solid black;
     padding: 15px;
     text-align: left;
+    float: left;
+    box-shadow: 0px 8px 16px 0px rgba(1, 53, 53, 0.25);
 }
+
+#detailCat{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
 
 #listHeader{
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 3%;
     color: rgb(6, 55, 55);
     font-family: 'Bad Script', cursive;
-    /* margin-right: 120px; */
-    width: 75%;
+    float: left;
+    width: 100%;
 }
+
+#taskCat{
+    width: 25%;
+    float: right;
+    margin: 0px;
+}
+
 
 #addNewItem{
     display: inline-flex;
@@ -31,6 +48,11 @@ main{
 
 #enterNewItem{
     width: 75%;
+}
+
+#categoryList{
+    min-height: 200px;
+    max-height: fit-content;
 }
 
 #categoryList li{
@@ -45,17 +67,35 @@ main{
     color: black;
 }
 
-
 #categoryList li::selection{
-    background-color:rgba(4, 148, 148,.5);
+    background-color:blue;
     color: white;
 }
 
+#deleteTask{
+    font-size: 14px;
+    padding: 5px;
+    margin-top: 20px;
+    font-weight: bolder;
+}
+
+#deleteTask:hover{
+    background-color: teal;
+    color: white;
+}
+
+
+/**************************
+RIGHT: DETAIL SECTION
+***************************/
 #detailedInfo{
-    width: 50%;
+    width: 60%;
     border: 1px solid black;
     padding: 20px;
-    background-color: rgba(245, 245, 245,.75)
+    background-color: rgba(255, 250, 205,.75);
+    float: right;
+    margin-right: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(1, 53, 53, 0.25);
 }
 
 #detailedInfo h2{
@@ -65,10 +105,17 @@ main{
 
 #infoSection{
     margin-left: 2%;
+    width: 75%;
     display: grid;
 }
 
+#detailPic{
+    text-align: right;
+    position: fixed;
+    left: 84.5%;
+    top: 100px;
 
+}
 
 #saveInfo{
     font-size: 14px;
@@ -86,14 +133,9 @@ label{
     width: 120px;
     text-align: right;
     display: inline-flex;
-    border: blue 1px solid;
     padding: 3px;
 }
 
-/* input{
-    width: 300px;
-    text-align: left;
-} */
 
 div[class*="list_"]{
     /* border: springgreen 2px solid; */
@@ -129,18 +171,11 @@ div p{
 #lblCat{
     width: 100%;
 }
-/* 
-input{
-    min-width: 60px;
-    
-    /* max-width: 80%; */
-    min-height: 15px;
-    height: auto;
-} */
 
 #ingredients{
     display: block;
     width: 80%;
+    margin-right: 20%;
 }
 
 
@@ -176,11 +211,3 @@ input[class*="ckbox"]{
 }
 
 
-#detailPic{
-    /* float: right; */
-    text-align: right;
-    display: fixed;
-    left: 500px;
-    top: 15px;
-    border: blue 2px solid;
-}

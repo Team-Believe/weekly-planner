@@ -176,8 +176,11 @@ function addInput(e){
     var sect = clkSect.substr(4, clkSect.length);
     var addToDiv = document.getElementById(`${sect}`);
     var sectCt = addToDiv.childElementCount;
-    var newInput = document.createElement('input');
+    var newInput = document.createElement('textarea');
+    newInput.rows = 1;
     newInput.id = `${sect}_${sectCt}`;
+    newInput.className = `arr_${sect}`;
+    autoRender(newInput);
     addToDiv.appendChild(newInput);
   }
 }

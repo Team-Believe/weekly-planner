@@ -6,105 +6,6 @@ html{
 }
 
 
-/*HEADER SECTION*/
-header{
-    width: 100%;
-    height: 50px;
-    margin-bottom: 15px;
-    border-bottom: solid 1px black;
-    background-color: rgba(9, 87, 87,.75);
-    text-align: left;
-    border-bottom: black 1px solid;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    /* position: fixed; */
-    /* top: 0;
-    left: 0;
-    z-index: 100; */
-}
-
-#headerWelcome{
-    font-family: 'Shadows Into Light';
-    text-align: center;
-    color: white;
-    padding: 5px;
-    font-size: 35px;
-}   
-
-#menuBtn {
-    background-color: rgba(9, 87, 87,.40);
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-  }
-  
-#menuDropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
- #menuList {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  #menuList a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  #menuList a:hover {background-color: #ddd;}
-  #menuDropdown:hover #menuList {display: block;}
-  #menuDropdown:hover #menuBtn {background-color:rgb(9, 87, 87);}/* Dropdown Button */
-
-  #menuBtn {
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-  }
-  
-  #menuDropdown {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
-  }
-  
-  #menuList {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  #menuList a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  #menuList a:hover {background-color: #ddd;}
-  #menuDropdown:hover #menuList {display: block;}
-  #menuDropdown:hover #menuBtn {background-color: rgb(9, 87, 87);}
-
-#logo{
-    position: absolute;
-    top: 5px;
-    left: 95%;
-    margin: auto 0px;
-    border: 1PX black solid;
-}
-
 
 /* MAIN SECTION
 -------------------
@@ -113,22 +14,28 @@ main{
     text-align: center;
 }
 
+label{
+    width: fit-content;
+    padding: 0px;
+    
+}
 
 /* ==============
 FORM SECTION
 =====================*/
 #addNewTask_Form{
-    width: 65%;
+    width: 55%;
     font-family: 'Shadows Into Light';
     font-size: 24px;
     text-align: left;
     align-self: auto;
     border: black solid 1px;
-    background-color: lemonchiffon;
+    background-color: rgba(255, 250, 205,.75);
     padding: 10PX;  
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 15px;
+    box-shadow: 0px 8px 16px 0px rgba(1, 53, 53, 0.25);
 }
 
 #addNewTask_Form h3{
@@ -144,7 +51,7 @@ FORM SECTION
 #addNewSection{
     display: block;
     margin-left: 15px;
-    width: 50%;
+    width: 60%;
 }
 
 
@@ -171,6 +78,7 @@ FORM SECTION
     margin: 10px;
 }
 
+/* fieldset */
 #taskEntered{
     margin-bottom: 15px;
     height: 30px;
@@ -196,29 +104,39 @@ FORM SECTION
 /* form buttons
 ====================*/
 #detailButton{
-    margin-right: 80px;
-    font-size: 12px;
-
+    margin-right: 0px;
+    font-size: 16px;
+    padding: 5px;
+    float: right;
 }
+
+#applyTask{
+    font-size: 16px;
+    padding: 5px;
+}
+
+.catLogo{
+    position: absolute;
+    top: 100px;
+    left: 950px;
+    height: 200px;
+    width: 200px;
+}
+
+
+
+/* PLANNER SECTION
+****************************/
 #weeklyDisplaySection{
     width: 96%;
     font-size: 20px;
     text-align: center;
     display: inline-flex;
-    min-height: 250px;
-    max-height: fit-content;
-    /* height: 500px; */
+    height: fit-content;
     margin-bottom: 30px;
     max-height: fit-content;
-}
-
-.displayDay{
-    font-family: 'Shadows Into Light';
-    font-size: 22px;
-    border: black 1px solid;
-    width: 100%;
-    height: initial;
-    background-color:lemonchiffon;
+    background-color: rgba(255, 250, 205,.5);
+    box-shadow: 0px 8px 16px 0px rgba(1, 53, 53, 0.25);
 }
 
 .displyHeaderDay{
@@ -227,21 +145,32 @@ FORM SECTION
     margin-bottom: 10px;
 }
 
+.displayDay{
+    font-family: 'Shadows Into Light';
+    font-size: 22px;
+    padding: 5px 0px;
+    border: black 1px solid;
+    width: 100%;
+}
+
 .displayListDay{
     width: 96%;
     margin: auto;
     min-height: 50px;
     padding: 4px 0px;
-    border: black solid 1px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 250, 205,.75);
 }
 
-
+/*********************
+ Planner: tasks by Category
+*********************/
 #ExerciseTask{
     font-family: 'Shadows Into Light';
     background-color: rgba(0, 128, 128, .5);
     border: black 1px solid;
-    border-radius: 5px;
-    margin: px;
+    border-radius: 8.5px;
+    margin: 2px;
 }
 
 
@@ -249,7 +178,7 @@ FORM SECTION
     font-family: 'Shadows Into Light';
     background-color: rgba(255, 127, 80, .75);
     border: black 1px solid;
-    border-radius: 5px;
+    border-radius: 8.5px;
     margin: 2px;
 }
 
@@ -257,7 +186,7 @@ FORM SECTION
     font-family: 'Shadows Into Light';
     background-color: rgba(255, 255, 0,.75);
     border: black 1px solid;
-    border-radius: 5px;
+    border-radius: 8.5px;
     margin: 2px;
 }
 
@@ -265,46 +194,16 @@ FORM SECTION
     font-family: 'Shadows Into Light';
     background-color: rgba(100, 149, 237, .75);
     border: black 1px solid;
-    border-radius: 5px;
+    border-radius: 8.5px;
     margin: 2px;
 }
 
-/* =============================
- ENTIRE SECTION BOX (FORM & CHART)
-=====================*/
-#formChartSection{
-    width: 100%;
-    text-align: left;
-    display: inline-flex;
-}
-
-
-/* #addNewSection{
-    width: 100%;
-    margin-bottom: 10px;
-} */
-
-
-/* ==============
+/*********************
  CHART SECTION
-=====================*/
+*********************/
 #myChart{
+    text-align: center;
     align-self: auto;
-    /* display: block;
-    border: black solid 1px;
-    width: 75px
-    margin: auto;
-    height: 75px;
-    margin-right: 20px; */
-}
-
-/* ==============
- FOOTER
-=====================*/
-footer{
-    background-color:gray;
-    width: 100%;
-    height: 50PX;
-    border-top: black 1PX solid;
-    margin-top: 30PX;
+    width: 500px;
+    height: 500px;
 }
