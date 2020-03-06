@@ -93,7 +93,7 @@ function dayDropdownList(e){
     timeDropdown.removeChild(timeDropdown.lastElementChild);
   }
 
-  if(cat === 'Meals'){
+  if(cat === 'Meal'){
     dropDownSection.style.display = 'inline-flex';
     for(var i = 0; i<mealArr.length; i++){
       var selection = document.createElement('option');
@@ -134,7 +134,7 @@ function showLogoImage(){
   td.style.display = 'none';
 
   switch (cat){
-  case 'Meals':
+  case 'Meal':
     ml.style.display = 'inline';
     break;
   case 'Exercise':
@@ -171,7 +171,7 @@ function findExistingTask(task, category){
     }
   }
   // Looks at the Meals Category & Array
-  if (category === 'Meals'){
+  if (category === 'Meal'){
     for(i = 0; i< mainUsersArr[cIdx].Meals.length; i++){
       if(mainUsersArr[cIdx].Meals[i].title.toLowerCase() === task.toLowerCase()){
         taskExists = true;
@@ -208,7 +208,7 @@ function chartGen() {
 
   for(var i = 0; i < mainUsersArr[cIdx].Planner.length; i++){
     var lookupCat = mainUsersArr[cIdx].Planner[i].category;
-    if(lookupCat === 'Meals'){userM ++;}
+    if(lookupCat === 'Meal'){userM ++;}
     if(lookupCat === 'Exercise'){userEx ++;}
     if(lookupCat === 'Activity'){userAct ++;}
     if(lookupCat === 'ToDo'){userTdo ++;}
@@ -237,7 +237,7 @@ function chartGen() {
     data: {
       labels: [
         'Exercise',
-        'Meals',
+        'Meal',
         'ToDo',
         'Activities'
       ],

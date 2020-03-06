@@ -45,17 +45,14 @@ A page that allows users to login using a username, and displays a 7 day weekly 
 
 ### **What are your stretch goals?**
 
-<<<<<<< HEAD
 - A user will be able to go to the events page and edit a particular project. 
 Example: If a user adds a Meal event on Monday, the user will be able to click on that event, which will take him/her to the events page. Users will then be able to add specific details to this event, like ingridients list, and add those ingredients to a grocery list
 - Add more evnts to the dropdown list. Initally we are going to start with 3 events: Meals, Exersice, and To do
 - Users canx create their own events, in addition to the ones listed in the dropdown
-=======
 - A user will be able to go to the events page and edit a particular event 
 Example: If a user adds a Meal event to Mondays, the user will be able to click on that event, which will take him/her to the events page. Users will then be able to add specific details to this event, like ingridients list, and add those ingredients to a grocery list
 - Add more evnts to the dropdown list
 - Users can create their own events, in addition to the ones listed in the dropdown
->>>>>>> 35649294b0208dfff0ea4870cd30756d1dd9f2ef
 - Start the weekly planner on the day the user visits the website 
 - Allow users to see past events and add future events
 
