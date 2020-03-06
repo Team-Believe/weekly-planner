@@ -9,7 +9,7 @@ var detailHeader = document.getElementById('detailHeader');
 var btnAddNewToDo;
 var cat = detailedItem[0];
 var title = detailedItem[1];
-var showIndex = detailedItem[2];
+var showIndex;
 
 headerName.textContent = `${mainUsersArr[cIdx].userName}'s ${cat} Items`;
 document.getElementById('taskCat').value = cat;
@@ -48,7 +48,10 @@ function renderCatList(arr, task){
       detailedItem.push(x);
       localStorage.setItem('detailItem',JSON.stringify(detailedItem));
       showIndex = x;
-    }
+    } 
+  }
+  if (showIndex === null || showIndex === undefined){
+    showIndex = 0;
   }
 }
 
@@ -58,6 +61,11 @@ saveInfo.addEventListener('click', saveTaskInfo);
 
 function saveTaskInfo(e){
   e.preventDefault();
+
+  if (showIndex === null){
+    showIndex = 0;
+  }
+
   var objKey = Object.keys(SearchArr[showIndex]);
   var objValues = Object.values(SearchArr[showIndex]);
 
@@ -378,8 +386,13 @@ function returnTime(num){
     } else {
       len = `${t} min`;
     }
-    return len;
+  } 
+
+  if (len = undefined){
+    len = "";
   }
+  
+  return len;
 }
 
 

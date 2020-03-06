@@ -18,16 +18,15 @@ function renderPlanner(){
       mainUsersArr[cIdx].Planner[i].task,
       mainUsersArr[cIdx].Planner[i].time);
   }
-  if(mainUsersArr[cIdx].Planner.length === 0){
+
+  if(mainUsersArr[cIdx].Planner.length < 1){
    var chart =  document.getElementById('myChart');
    chart.style.display = 'none';
-   
   } else {
-    chart =  document.getElementById('myChart');
+   chart =  document.getElementById('myChart');
    chart.style.display = 'block';
    chartGen(); 
   }
-  
 }
 
 showLogoImage();
