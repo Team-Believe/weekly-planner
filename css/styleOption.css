@@ -1,0 +1,209 @@
+html{
+    max-width: 960;
+    background-image: url(../images/paperTexture.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+/* MAIN SECTION
+-------------------
+ -- weeklyDisplaySection */
+main{
+    text-align: center;
+}
+
+label{
+    width: fit-content;
+    padding: 0px;
+    
+}
+
+/* ==============
+FORM SECTION
+=====================*/
+#addNewTask_Form{
+    width: 55%;
+    font-family: 'Shadows Into Light';
+    font-size: 24px;
+    text-align: left;
+    align-self: auto;
+    border: black solid 1px;
+    background-color: rgba(255, 250, 205,.75);
+    padding: 10PX;  
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    box-shadow: 0px 8px 16px 0px rgba(1, 53, 53, 0.25);
+}
+
+#addNewTask_Form h3{
+    font-family: 'Shadows Into Light';
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: left;
+    padding-bottom: 10px;
+    /* width: 90%; */
+    /* margin-right: 30px;  */
+}
+
+#addNewSection{
+    display: block;
+    margin-left: 15px;
+    width: 60%;
+}
+
+
+/* dropdown Category Menu
+=====================*/
+#taskCategory{
+    width: 50%;
+    text-align: right;
+    font-size: 18px;
+    height: 30px;
+    margin: 10px;
+}
+
+#timeOfDay_Dropdown{
+    width: 100%;
+    display: none;
+}
+
+#daytimeSelected{
+    width: 50%;
+    text-align: right;
+    font-size: 20px;
+    height: 30px;
+    margin: 10px;
+}
+
+/* fieldset */
+#taskEntered{
+    margin-bottom: 15px;
+    height: 30px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.dayCheckBox{
+    height: 15px;
+    width: 15px;
+    margin-right: 1px;
+}
+
+/* days of the week
+=====================*/
+#daysTaskApplied{
+    justify-content: space-evenly;
+    font-size: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* form buttons
+====================*/
+#detailButton{
+    margin-right: 0px;
+    font-size: 16px;
+    padding: 5px;
+    float: right;
+}
+
+#applyTask{
+    font-size: 16px;
+    padding: 5px;
+}
+
+.catLogo{
+    position: absolute;
+    top: 100px;
+    left: 950px;
+    height: 200px;
+    width: 200px;
+}
+
+
+
+/* PLANNER SECTION
+****************************/
+#weeklyDisplaySection{
+    width: 96%;
+    font-size: 20px;
+    text-align: center;
+    display: inline-flex;
+    height: fit-content;
+    margin-bottom: 30px;
+    max-height: fit-content;
+    background-color: rgba(255, 250, 205,.5);
+    box-shadow: 0px 8px 16px 0px rgba(1, 53, 53, 0.25);
+}
+
+.displyHeaderDay{
+    background-color: rgba(109,109,109,.75);
+    padding: 4px 0px;
+    margin-bottom: 10px;
+}
+
+.displayDay{
+    font-family: 'Shadows Into Light';
+    font-size: 22px;
+    padding: 5px 0px;
+    border: black 1px solid;
+    width: 100%;
+}
+
+.displayListDay{
+    width: 96%;
+    margin: auto;
+    min-height: 50px;
+    padding: 4px 0px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 250, 205,.75);
+}
+
+/*********************
+ Planner: tasks by Category
+*********************/
+#ExerciseTask{
+    font-family: 'Shadows Into Light';
+    background-color: rgba(0, 128, 128, .5);
+    border: black 1px solid;
+    border-radius: 8.5px;
+    margin: 2px;
+}
+
+
+#MealsTask{
+    font-family: 'Shadows Into Light';
+    background-color: rgba(255, 127, 80, .75);
+    border: black 1px solid;
+    border-radius: 8.5px;
+    margin: 2px;
+}
+
+#ToDoTask{
+    font-family: 'Shadows Into Light';
+    background-color: rgba(255, 255, 0,.75);
+    border: black 1px solid;
+    border-radius: 8.5px;
+    margin: 2px;
+}
+
+#ActivityTask{
+    font-family: 'Shadows Into Light';
+    background-color: rgba(100, 149, 237, .75);
+    border: black 1px solid;
+    border-radius: 8.5px;
+    margin: 2px;
+}
+
+/*********************
+ CHART SECTION
+*********************/
+#myChart{
+    text-align: center;
+    align-self: auto;
+    width: 500px;
+    height: 500px;
+}

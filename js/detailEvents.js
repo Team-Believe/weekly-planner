@@ -64,10 +64,20 @@ function saveTaskInfo(e){
     var objType = typeof objValues[k];
     if (objType === 'object'){
       var divEl = `${objKey[k]}`;
-      var countDiv = document.getElementById(divEl).childElementCount;
+      if (divEl === 'list'){
+        var countDiv = detailSection.childElementCount;
+      } else {
+        countDiv = document.getElementById(divEl).childElementCount;
+      }
       for(var d = 0; d<countDiv; d++){
         var elID = `${objKey[k]}_${d}`;
-        var inputFld = document.getElementById(elID);
+
+        if (divEl === 'list'){
+          var inputFld = document.getElementsByClassName(elID);
+        } else {
+          var inputFld = document.getElementById(elID);
+        }
+
         var objAddEl = eval(`SearchArr[${showIndex}].${objKey[k]}`);
         var txt = inputFld.value;
          if(txt === null || txt === undefined){txt='';}
@@ -118,34 +128,59 @@ function findTaskIndex(arr, task){
 }
 
 // EVENT: add in new array input box
-detailSection.addEventListener('click',addInput);
+if (cat === 'ToDo'){
+  detailSection.addEventListener('click',addInputToDO);
+  btnAddNewToDo.addEventListener('click',addDivToDO);
+} else if (cat === 'Exercise' || cat === 'Meals'){
+  detailSection.addEventListener('click',addInput);
+}
 
-function addInput(e){
+function addInputToDO(e){
   var clkSect = e.target.id;
   var clkParent = e.target.parentElement.className;
-   
-  if(clkParent.search('list_') >= 0){
-    e.preventDefault();
+
+      e.preventDefault();
       var srchIndex = clkParent.search('_');
       var fndIndex = Number(clkParent.substr(srchIndex+1,(clkParent.length-srchIndex)));
       
-      var ckBox = document.getElementById(clkSect);
-      console.log(SearchArr[showIndex].list[fndIndex]);
-      SearchArr[showIndex].list.splice(fndIndex,1);
-      toLocalStorage();
-      setupToDo(SearchArr, title);
-      
-  }
+      if(clkSect === `toDoDelete_${fndIndex}`){
+        
+        detailSection.removeEventListener('click',addInputToDO, false);
+        SearchArr[showIndex].list.splice(fndIndex,1);
+        toLocalStorage();
+        setupToDo(SearchArr, title);
+        
+      } else if (e.target.id === `title_${fndIndex}`) {
+        e.preventDefault();
+        var ckEl = `title_${fndIndex}`;
+        var liItem = document.getElementById(ckEl);
+        
+        
+        if(liItem.className === 'checked'){
+          liItem.style.textDecoration = 'none';
+          liItem.className = 'unchecked';
+        }else if (liItem.className === 'unchecked'){
+          liItem.style.textDecoration = 'line-through';
+          liItem.className = 'checked';
+        }
+      }
+    }
 
+function addInput(e){
+  var clkSect = e.target.id;
+  // var clkParent = e.target.parentElement.className;
   if(clkSect === null ||clkSect === '' || clkSect.search('add_') < 0){
-    detailForm.removeEventListener('click',addInput);
+    // detailForm.removeEventListener('click',addInput);
   } else {
     e.preventDefault();
     var sect = clkSect.substr(4, clkSect.length);
     var addToDiv = document.getElementById(`${sect}`);
     var sectCt = addToDiv.childElementCount;
-    var newInput = document.createElement('input');
+    var newInput = document.createElement('textarea');
+    newInput.rows = 1;
     newInput.id = `${sect}_${sectCt}`;
+    newInput.className = `arr_${sect}`;
+    autoRender(newInput);
     addToDiv.appendChild(newInput);
   }
 }
@@ -190,6 +225,7 @@ function renderDetailItem(arr,task){
       //Loops through the Key Array value, sets up Input Box
       for(var y = 0; y < objLen; y++){
         var arrInput = document.createElement('textarea');
+        arrInput.rows = 1;
         arrInput.id = `${objKeys[x]}_${y}`;
         arrInput.className = `arr_${objKeys[x]}`;
         divInput.appendChild(arrInput);
@@ -238,14 +274,18 @@ function setupToDo(arr, title){
     var newItemSect = document.createElement('div');
     newItemSect.className = 'addNewToDo';
     detailHeader.appendChild(newItemSect);
+    
+
     var newInput = document.createElement('input');
     newInput.placeholder = 'Enter New Task';
     newInput.id = 'addNewTask';
     newItemSect.appendChild(newInput);
+
     btnAddNewToDo = document.createElement('button');
     btnAddNewToDo.textContent = 'Add Task';
     btnAddNewToDo.id = 'addNewDetailTask';
     newItemSect.appendChild(btnAddNewToDo);
+
   } else {
     // if the AddNew section already setup
     // -- removes all the previous elements listed
@@ -262,19 +302,20 @@ function setupToDo(arr, title){
     itemDiv.className = `list_${x}`;
     detailSection.appendChild(itemDiv);
 
-    var ckBox = document.createElement('input');
-    ckBox.type = 'checkbox';
-    ckBox.className = `ckbox_${x}`;
-    itemDiv.appendChild(ckBox);
+    // var ckBox = document.createElement('input');
+    // ckBox.type = 'checkbox';
+    // ckBox.id = `ckbox_${x}`;
+    // itemDiv.appendChild(ckBox);
 
     var arrItem = document.createElement('p');
-    // arrItem.id = 
+    arrItem.id = `title_${x}`;
+    arrItem.className = 'unchecked';
     arrItem.textContent = arr[showIndex].list[x];
     itemDiv.appendChild(arrItem);
 
-    var itemDelete = document.createElement('div');
+    var itemDelete = document.createElement('button');
     itemDelete.textContent = 'X';
-    itemDelete.id = 'toDoDelete';
+    itemDelete.id = `toDoDelete_${x}`;
     itemDiv.appendChild(itemDelete);
   }
 }
@@ -293,20 +334,22 @@ function addDivToDO(e){
   detailSection.appendChild(itemDiv);
 
   
-  var ckBox = document.createElement('input');
-  ckBox.type = 'checkbox';
-  ckBox.className = `ckbox_${taskCt}`;
-  itemDiv.appendChild(ckBox);
+  // var ckBox = document.createElement('input');
+  // ckBox.type = 'checkbox';
+  // ckBox.id = `ckbox_${taskCt}`;
+  // itemDiv.appendChild(ckBox);
 
 
   var arrItem = document.createElement('p');
   var text = document.getElementById('addNewTask').value;
+  arrItem.className = 'unchecked';
+  arrItem.id = `title_${taskCt}`;
   arrItem.textContent = text;
   itemDiv.appendChild(arrItem);
 
-  var itemDelete = document.createElement('div');
+  var itemDelete = document.createElement('button');
   itemDelete.textContent = 'X';
-  itemDelete.id = 'toDoDelete';
+  itemDelete.id = `toDoDelete_${taskCt}`;
   itemDiv.appendChild(itemDelete);
 
   document.getElementById('addNewTask').value = "";
@@ -363,9 +406,14 @@ function autoRender(el){
   },0);
 }
 
-var txtBox = document.querySelector('textarea');
 
-txtBox.addEventListener('keydown',autosize);
+
+// ADD_NEW: To Do task
+if(document.querySelector('textarea') !== null){
+  var txtBox = document.querySelector('textarea');
+  txtBox.addEventListener('keydown',autosize);
+}
+
 
 function autosize(){
   var el = this;

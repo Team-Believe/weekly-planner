@@ -10,9 +10,10 @@ header{
     display: inline-flex;
     width: 100%;
     height: 50px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     border-bottom: solid 1px black;
     background-color: rgba(9, 87, 87,.75);
+    box-shadow: 0px 8px 16px 0px rgba(1, 17, 17, 0.25);
   }
   
   h1{
@@ -68,202 +69,14 @@ header{
   .dropdown:hover .dropdown-content {display: block;}
   .dropdown:hover .dropbtn {background-color:rgb(9, 87, 87);}
   /* End of header section and nav bar */
-  
-  #logo{
-    position: absolute;
-    top: 5px;
-    left: 95%;
-    margin: auto 0px;
-    border: 1PX black solid;
-  }
-
-#logo{
-    position: absolute;
-    top: 5px;
-    left: 95%;
-    margin: auto 0px;
-    border: 1PX black solid;
-}
 
 
-/* MAIN SECTION
--------------------
- -- weeklyDisplaySection */
-main{
-    text-align: center;
-}
-
-#weeklyDisplaySection{
-    width: 96%;
-    font-size: 20px;
-    text-align: center;
-    display: inline-flex;
-    min-height: 250px;
-    max-height: fit-content;
-    /* height: 500px; */
-    margin-bottom: 30px;
-    max-height: fit-content;
-}
-
-.displayDay{
-    font-family: 'Shadows Into Light';
-    font-size: 22px;
-    border: black 1px solid;
-    width: 100%;
-    height: initial;
-    background-color:lemonchiffon;
-}
-
-.displyHeaderDay{
-    background-color: rgba(109,109,109,.75);
-    padding: 4px 0px;
-    margin-bottom: 10px;
-}
-
-.displayListDay{
-    width: 96%;
-    margin: auto;
-    min-height: 50px;
-    padding: 4px 0px;
-    /* border: black solid 1px; */
-}
-
-
-#ExerciseTask{
-    font-family: 'Shadows Into Light';
-    background-color: teal;
-    border: black 1px solid;
-    border-radius: 5px;
-    margin: px;
-}
-
-
-#MealsTask{
-    font-family: 'Shadows Into Light';
-    background-color: coral;
-    border: black 1px solid;
-    border-radius: 5px;
-    margin: 2px;
-}
-
-#ToDoTask{
-    font-family: 'Shadows Into Light';
-    background-color: yellow;
-    border: black 1px solid;
-    border-radius: 5px;
-    margin: 2px;
-}
-
-#ActivityTask{
-    font-family: 'Shadows Into Light';
-    background-color: cornflowerblue;
-    border: black 1px solid;
-    border-radius: 5px;
-    margin: 2px;
-}
-
-/* =============================
- ENTIRE SECTION BOX (FORM & CHART)
-=====================*/
-#formChartSection{
-    width: 100%;
-    text-align: left;
-    display: inline-flex;
-}
-
-/* ==============
-FORM SECTION
-=====================*/
-#addNewTask_Form{
-    font-family: 'Shadows Into Light';
-    font-size: 30px;
-    align-self: auto;
-    border: black solid 1px;
-    background-color: lemonchiffon;
-    padding: 10PX;  
-    margin-left: auto;
-    margin-right: auto;
-    margin: 75px;
-}
-
-#addNewTask_Form h3{
-    font-family: 'Shadows Into Light';
-    font-size: 30px;
-    text-align: left;
-    width: 90%;
-    margin-right: 30px; 
-}
-
-/* #addNewSection{
-    width: 100%;
-    margin-bottom: 10px;
-} */
-
-/* dropdown Category Menu
-=====================*/
-#taskCategory{
-    width: 100%;
-    text-align: right;
-    font-size: 18px;
-    height: 30px;
-    margin: 5px;
-}
-
-#daytimeSelected{
-    width: 50%;
-    text-align: right;
-    font-size: 22px;
-    height: 30px;
-    margin: 5px;
-}
-
-#timeOfDay_Dropdown{
-    width: 100%;
-    display: none;
-}
-
-#taskEntered{
-    margin-bottom: 15px;
-    height: 30px;
-    font-size: 18px;
-    width: 100%;
-}
-
-/* days of the week
-=====================*/
-#daysTaskApplied{
-    justify-content: space-evenly;
-    font-size: 20px;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-/* form buttons
-====================*/
-#detailButton{
-    margin-right: 80px;
-    font-size: 12px;
-
-}
-
-/* ==============
- CHART SECTION
-=====================*/
-#myChart{
-    align-self: auto;
-    /* display: block;
-    border: black solid 1px;
-    width: 75px
-    margin: auto;
-    height: 75px;
-    margin-right: 20px; */
-}
 
 /* ==============
  FOOTER
 =====================*/
 footer{
-    background-color:gray;
+    background-color:rgba(9, 87, 87,.75);
     width: 100%;
     height: 50PX;
     border-top: black 1PX solid;
