@@ -122,7 +122,7 @@ function dayDropdownList(e){
 function showLogoImage(){
 
   var cat = taskCategory.value;
-
+  
   var ex = document.getElementById('imgExercise');
   ex.style.display = 'none';
   var ml= document.getElementById('imgMeal');
@@ -133,9 +133,9 @@ function showLogoImage(){
   td.style.display = 'none';
 
   switch (cat){
-  case 'Meal':
+  case 'Meals':
     ml.style.display = 'inline';
-    break;
+    break; 
   case 'Exercise':
     ex.style.display = 'inline';
     break;
