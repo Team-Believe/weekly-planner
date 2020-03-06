@@ -9,7 +9,7 @@ var detailHeader = document.getElementById('detailHeader');
 var btnAddNewToDo;
 var cat = detailedItem[0];
 var title = detailedItem[1];
-var showIndex;
+var showIndex = detailedItem[2];
 
 headerName.textContent = `${mainUsersArr[cIdx].userName}'s ${cat} Items`;
 document.getElementById('taskCat').value = cat;
@@ -20,6 +20,7 @@ switch(cat){
 case 'Meals':
   var SearchArr = mainUsersArr[cIdx].Meals;
   renderCatList(SearchArr, title);
+
   renderDetailItem(SearchArr,title);
   break;
 case 'Exercise':
@@ -122,7 +123,6 @@ function findTaskIndex(arr, task){
       detailedItem[2] = x;
       localStorage.setItem('detailItem',JSON.stringify(detailedItem));
       showIndex = x;
-      // break;
     }
   }
 }
@@ -253,8 +253,6 @@ function renderDetailItem(arr,task){
       valueInput.id = `${objKeys[x]}`;
       keyLabel.appendChild(valueInput);
 
-      console.log(txt);
-
       if(txt === undefined || txt === null){txt = '';}
       valueInput.value = txt;
     }
@@ -302,11 +300,6 @@ function setupToDo(arr, title){
     itemDiv.className = `list_${x}`;
     detailSection.appendChild(itemDiv);
 
-    // var ckBox = document.createElement('input');
-    // ckBox.type = 'checkbox';
-    // ckBox.id = `ckbox_${x}`;
-    // itemDiv.appendChild(ckBox);
-
     var arrItem = document.createElement('p');
     arrItem.id = `title_${x}`;
     arrItem.className = 'unchecked';
@@ -333,13 +326,6 @@ function addDivToDO(e){
   itemDiv.className = `list_${taskCt}`;
   detailSection.appendChild(itemDiv);
 
-  
-  // var ckBox = document.createElement('input');
-  // ckBox.type = 'checkbox';
-  // ckBox.id = `ckbox_${taskCt}`;
-  // itemDiv.appendChild(ckBox);
-
-
   var arrItem = document.createElement('p');
   var text = document.getElementById('addNewTask').value;
   arrItem.className = 'unchecked';
@@ -359,8 +345,6 @@ function addDivToDO(e){
 
 function getTimeMinutes(str){
   var txt = str.toLowerCase();
-  console.log(`txt: ${txt}`);
-
   if(txt.search('h')>=0){
     var t = txt.slice(0,txt.search('h'));
     t = Number(t.trim(t));
@@ -423,4 +407,10 @@ function autosize(){
   },0);
 }
 
-//https://codepen.io/vsync/pen/czgrf
+var catDropdown = document.getElementById('taskCat');
+catDropdown.addEventListener('change', changeDetailPage);
+
+function changeDetailPage(e){
+  var cat = e.target.value;
+  
+}

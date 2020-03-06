@@ -19,8 +19,8 @@ function renderPlanner(){
       mainUsersArr[cIdx].Planner[i].time);
   }
   if(mainUsersArr[cIdx].Planner.length === 0){
-    var chart =  document.getElementById('myChart');
-    chart.style.display = 'none';
+   var chart =  document.getElementById('myChart');
+   chart.style.display = 'none';
   } else {
     chart =  document.getElementById('myChart');
     chart.style.display = 'block';
@@ -58,7 +58,6 @@ function findDaysApplied(e){
       appendTask(`day${x}`,category, taskEntered, timeOfDay);
     }
   }
-  console.log(mainUsersArr[cIdx].Exercise);
   toLocalStorage();
   applyTask.reset();
   dropDownSection.style.display = 'none';
@@ -155,13 +154,11 @@ function showLogoImage(){
 // function to find if task exists.
 function findExistingTask(task, category){
   var taskExists = false;
-  console.log(category);
 
   // Looks at the Exercise Category & Array
   if (category === 'Exercise'){
     for(var i = 0; i< mainUsersArr[cIdx].Exercise.length; i++){
       if(mainUsersArr[cIdx].Exercise[i].title.toLowerCase() === task.toLowerCase()){
-        console.log('task exists');
         taskExists = true;
       }
     }
@@ -212,24 +209,12 @@ function chartGen() {
     if(lookupCat === 'Exercise'){userEx ++;}
     if(lookupCat === 'Activity'){userAct ++;}
     if(lookupCat === 'ToDo'){userTdo ++;}
-    // userEx.push(mainUsersArr[i].userExercise);
-    // userM.push(mainUsersArr[i].userMeals);
-    // userTdo.push(mainUsersArr[i].userToDo);
   }
 
   var pMeal = Math.round ((userM/total) * 100);
   var pUserEx = Math.round ((userEx/total) * 100);
   var pUserTdo = Math.round ((userTdo/total) * 100);
   var pUserAct = Math.round((userAct/total) * 100);
-  console.log(pMeal);
-  console.log(pUserEx);
-  console.log(pUserTdo);
-  console.log(pUserAct);
-  console.log(userEx);
-  console.log(userM);
-  console.log(userTdo);
-  console.log(userAct);
-
   var ctx = document.getElementById('myChart').getContext('2d');
 
   new Chart(ctx, {
