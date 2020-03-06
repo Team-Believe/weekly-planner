@@ -23,8 +23,8 @@ function renderPlanner(){
    chart.style.display = 'none';
   } else {
     chart =  document.getElementById('myChart');
-   chart.style.display = 'block';
-   chartGen(); 
+    chart.style.display = 'block';
+    chartGen(); 
   }
   
 }
@@ -58,7 +58,6 @@ function findDaysApplied(e){
       appendTask(`day${x}`,category, taskEntered, timeOfDay);
     }
   }
-  console.log(mainUsersArr[cIdx].Exercise);
   toLocalStorage();
   applyTask.reset();
   dropDownSection.style.display = 'none';
@@ -93,7 +92,7 @@ function dayDropdownList(e){
     timeDropdown.removeChild(timeDropdown.lastElementChild);
   }
 
-  if(cat === 'Meals'){
+  if(cat === 'Meal'){
     dropDownSection.style.display = 'inline-flex';
     for(var i = 0; i<mealArr.length; i++){
       var selection = document.createElement('option');
@@ -125,29 +124,29 @@ function showLogoImage(){
   var cat = taskCategory.value;
 
   var ex = document.getElementById('imgExercise');
-    ex.style.display = 'none';
+  ex.style.display = 'none';
   var ml= document.getElementById('imgMeal');
-    ml.style.display = 'none';
+  ml.style.display = 'none';
   var act = document.getElementById('imgActivity');
-    act.style.display = 'none';
+  act.style.display = 'none';
   var td = document.getElementById('imgToDo');
-    td.style.display = 'none';
+  td.style.display = 'none';
 
   switch (cat){
-    case 'Meals':
-      ml.style.display = 'inline';
-      break;
-    case 'Exercise':
-      ex.style.display = 'inline';
-      break;
-    case 'ToDo':
-      td.style.display = 'inline';
-      break;
-    case 'Activity':
-      act.style.display = 'inline';
-      break;
-    default:
-      break;
+  case 'Meal':
+    ml.style.display = 'inline';
+    break;
+  case 'Exercise':
+    ex.style.display = 'inline';
+    break;
+  case 'ToDo':
+    td.style.display = 'inline';
+    break;
+  case 'Activity':
+    act.style.display = 'inline';
+    break;
+  default:
+    break;
   }
 }
 
@@ -155,13 +154,11 @@ function showLogoImage(){
 // function to find if task exists.
 function findExistingTask(task, category){
   var taskExists = false;
-  console.log(category);
 
   // Looks at the Exercise Category & Array
   if (category === 'Exercise'){
     for(var i = 0; i< mainUsersArr[cIdx].Exercise.length; i++){
       if(mainUsersArr[cIdx].Exercise[i].title.toLowerCase() === task.toLowerCase()){
-        console.log('task exists');
         taskExists = true;
       }
     }
@@ -171,7 +168,7 @@ function findExistingTask(task, category){
     }
   }
   // Looks at the Meals Category & Array
-  if (category === 'Meals'){
+  if (category === 'Meal'){
     for(i = 0; i< mainUsersArr[cIdx].Meals.length; i++){
       if(mainUsersArr[cIdx].Meals[i].title.toLowerCase() === task.toLowerCase()){
         taskExists = true;
@@ -208,28 +205,16 @@ function chartGen() {
 
   for(var i = 0; i < mainUsersArr[cIdx].Planner.length; i++){
     var lookupCat = mainUsersArr[cIdx].Planner[i].category;
-    if(lookupCat === 'Meals'){userM ++;}
+    if(lookupCat === 'Meal'){userM ++;}
     if(lookupCat === 'Exercise'){userEx ++;}
     if(lookupCat === 'Activity'){userAct ++;}
     if(lookupCat === 'ToDo'){userTdo ++;}
-    // userEx.push(mainUsersArr[i].userExercise);
-    // userM.push(mainUsersArr[i].userMeals);
-    // userTdo.push(mainUsersArr[i].userToDo);
   }
 
   var pMeal = Math.round ((userM/total) * 100);
   var pUserEx = Math.round ((userEx/total) * 100);
   var pUserTdo = Math.round ((userTdo/total) * 100);
   var pUserAct = Math.round((userAct/total) * 100);
-  console.log(pMeal);
-  console.log(pUserEx);
-  console.log(pUserTdo);
-  console.log(pUserAct);
-  console.log(userEx);
-  console.log(userM);
-  console.log(userTdo);
-  console.log(userAct);
-
   var ctx = document.getElementById('myChart').getContext('2d');
 
   new Chart(ctx, {
@@ -237,7 +222,7 @@ function chartGen() {
     data: {
       labels: [
         'Exercise',
-        'Meals',
+        'Meal',
         'ToDo',
         'Activities'
       ],
@@ -251,7 +236,7 @@ function chartGen() {
     options: {
       title: {
         display: true,
-        text: '',
+        text: 'Activity Pie Chart',
         position: 'top',
         fontSize: 16,
         fontColor: '#111',
@@ -283,13 +268,7 @@ function chartGen() {
       }
     }
   });
-  // Pie chart label colors
-  // [
-  //   'Exercise',
-  //   'Meals',
-  //   'ToDo',
-  //   'Activities'
-  // ];
+
 }
 
 
