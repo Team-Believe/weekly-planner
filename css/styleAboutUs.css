@@ -32,16 +32,16 @@
     border: black solid 1px;
 }
 
-.grow:hover
+#grow:hover
 {
-        -webkit-transform: scale(1.3);
+        -webkit-transform: scale(1.0);
         -ms-transform: scale(1.3);
-        transform: scale(1.3);
+        transform: scale(1.1);
 }
 
 p{
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 17px;
 }
 main{
     text-align: center;
