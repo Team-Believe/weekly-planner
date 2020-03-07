@@ -1,9 +1,7 @@
 'use strict';
-
 var allEvents = document.getElementById('userEventsChart');
 var headerName = document.getElementById('headerWelcome');
 headerName.textContent = `${mainUsersArr[cIdx].userName}'s Week`;
-
 var updateName = document.getElementById('updateName');
 updateName.addEventListener('submit', updateNmaeSubmit);
 function updateNmaeSubmit(e) {
@@ -24,7 +22,6 @@ function updateNameFindUser(name) {
   if (existingUser === false) {
     mainUsersArr[cIdx].userName = name;
     Alert.render(`Your username was successfully updated to '${name}'`);
-    allEvents.textContent = `${mainUsersArr[cIdx].userName}'s Activities`;
     headerName.textContent = `${mainUsersArr[cIdx].userName} Profile`;
   }
 }
