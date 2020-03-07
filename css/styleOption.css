@@ -118,7 +118,7 @@ FORM SECTION
 .catLogo{
     position: absolute;
     top: 100px;
-    left: 950px;
+    left: 60%;
     height: 200px;
     width: 200px;
 }
