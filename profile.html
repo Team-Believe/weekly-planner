@@ -28,36 +28,43 @@
               </div>
         </header>
         <main>
+             <p id="welcomeProfile"></p><br>
             <section id="detailSection">
                 <section id="detailedList">
                     <div id="listHeader">
-                        <h3>Profile Information</h3>
+                        <h3>Update User Name</h3>
                     </div>
-                    <ul>
-                        <!-- DOMit Team Assemble! -->
                        
-                        <!-- <form id="updateName"> -->
-                          <!-- <label id="label1">Hello!</br></label> -->
-                          <!-- <label id="label2">Enter new username: </label> -->
-                          <!-- <input id="userName" type="text" required placeholder="new UserName"> -->
-                          <!-- <button value="update" onclick="updateUserFunction()">Update</button>  -->
-                        <!-- </form> -->
-                        
-                        
-                        <p id="welcomeProfile"></p><br><br>
-                        <p>Maybe we can show the Chart in this page with specific info about the user?</p>
+                    <ul>
+                        <form id="updateName">
+                            <label id="label2">Enter a new Username and click "Update Name"</label>
+                            <input id="newUserName" type="text" required placeholder="new UserName">
+                            <button class="formButton" value="update">Update Name</button> 
+                        </form>
+                        <div id="dialogoverlay"></div>
+                        <div id="dialogbox">
+                            <div>
+                                <div id="dialogboxhead"></div>
+                                <div id="dialogboxbody"></div>
+                                <div id="dialogboxfoot"></div>
+                            </div>
+                        </div>
                     </ul>
                 </section>
                 <section id="detailedInformationSection">
                     <h3>Delete Account</h2>
-                        <p>To delete your account, click on the "Delete Account" button below.</p>
-                        <span>Warning: This action cannot be undone</span>
-                        <button onclick="deleteUserFunction()">Delete Account</button>
-                        
+                    <p>To delete your account, click on the "Delete Account" button below.</p>
+                    <span>Warning: This action cannot be undone</span>
+                    <button class="formButton" onclick="deleteUserFunction()">Delete Account</button>
                 </section>
             </section>
+            <section id="profileChartSection">
+                <p id="userEventsChart"></p>
+                <canvas id="profileChart"></canvas>
+            </section>
         </main>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
         <script src="js/app.js"></script>
-        <script src="js/rendering.js"></script>
+        <script src="js/profilePage.js"></script>
     </body>
 </html>
