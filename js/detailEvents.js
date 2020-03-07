@@ -6,6 +6,7 @@ var catList = document.getElementById('categoryList');
 var detailSection = document.getElementById('infoSection');
 var detailForm = document.getElementById('detailedInfo');
 var detailHeader = document.getElementById('detailHeader');
+var addNewTask = document.getElementById('addTask');
 var btnAddNewToDo;
 var cat = detailedItem[0];
 var title = detailedItem[1];
@@ -16,10 +17,9 @@ document.getElementById('taskCat').value = cat;
 
 // Sets the Search Array based on the category
 // saved in local storage
-console.log(cat);
 switch(cat){
 case 'Meals':
-  console.log(cat);
+
   var SearchArr = mainUsersArr[cIdx].Meals;
   renderCatList(SearchArr, title);
   renderDetailItem(SearchArr,title);
@@ -49,7 +49,7 @@ function renderCatList(arr, task){
       detailedItem.push(x);
       localStorage.setItem('detailItem',JSON.stringify(detailedItem));
       showIndex = x;
-    } 
+    }
   }
   if (showIndex === null || showIndex === undefined){
     showIndex = 0;
@@ -90,7 +90,7 @@ function saveTaskInfo(e){
 
         var objAddEl = eval(`SearchArr[${showIndex}].${objKey[k]}`);
         var txt = inputFld.value;
-         if(txt === null || txt === undefined){txt='';}
+        if(txt === null || txt === undefined){txt='';}
         objAddEl[d] = txt;
       }
     } else {
@@ -148,32 +148,32 @@ function addInputToDO(e){
   var clkSect = e.target.id;
   var clkParent = e.target.parentElement.className;
 
-      e.preventDefault();
-      var srchIndex = clkParent.search('_');
-      var fndIndex = Number(clkParent.substr(srchIndex+1,(clkParent.length-srchIndex)));
-      
-      if(clkSect === `toDoDelete_${fndIndex}`){
-        
-        detailSection.removeEventListener('click',addInputToDO, false);
-        SearchArr[showIndex].list.splice(fndIndex,1);
-        toLocalStorage();
-        setupToDo(SearchArr, title);
-        
-      } else if (e.target.id === `title_${fndIndex}`) {
-        e.preventDefault();
-        var ckEl = `title_${fndIndex}`;
-        var liItem = document.getElementById(ckEl);
-        
-        
-        if(liItem.className === 'checked'){
-          liItem.style.textDecoration = 'none';
-          liItem.className = 'unchecked';
-        }else if (liItem.className === 'unchecked'){
-          liItem.style.textDecoration = 'line-through';
-          liItem.className = 'checked';
-        }
-      }
+  e.preventDefault();
+  var srchIndex = clkParent.search('_');
+  var fndIndex = Number(clkParent.substr(srchIndex+1,(clkParent.length-srchIndex)));
+
+  if(clkSect === `toDoDelete_${fndIndex}`){
+
+    detailSection.removeEventListener('click',addInputToDO, false);
+    SearchArr[showIndex].list.splice(fndIndex,1);
+    toLocalStorage();
+    setupToDo(SearchArr, title);
+
+  } else if (e.target.id === `title_${fndIndex}`) {
+    e.preventDefault();
+    var ckEl = `title_${fndIndex}`;
+    var liItem = document.getElementById(ckEl);
+
+
+    if(liItem.className === 'checked'){
+      liItem.style.textDecoration = 'none';
+      liItem.className = 'unchecked';
+    }else if (liItem.className === 'unchecked'){
+      liItem.style.textDecoration = 'line-through';
+      liItem.className = 'checked';
     }
+  }
+}
 
 function addInput(e){
   var clkSect = e.target.id;
@@ -281,7 +281,7 @@ function setupToDo(arr, title){
     var newItemSect = document.createElement('div');
     newItemSect.className = 'addNewToDo';
     detailHeader.appendChild(newItemSect);
-    
+
 
     var newInput = document.createElement('input');
     newInput.placeholder = 'Enter New Task';
@@ -300,7 +300,7 @@ function setupToDo(arr, title){
       detailSection.removeChild(detailSection.lastElementChild);
     }
   }
-  
+
   // Loops through the list length
   // --adds in a Div with 2 boxes/paragraph
   // -- setup for check/delete options
@@ -347,7 +347,7 @@ function addDivToDO(e){
   itemDelete.id = `toDoDelete_${taskCt}`;
   itemDiv.appendChild(itemDelete);
 
-  document.getElementById('addNewTask').value = "";
+  document.getElementById('addNewTask').value = '';
   SearchArr[showIndex].list.push(text);
   toLocalStorage();
 }
@@ -363,11 +363,11 @@ function getTimeMinutes(str){
     var t = txt.slice(0,txt.search('h'));
     t = Number(t.trim(t));
     t = t * 60;
-  } 
-   if(txt.search('d')>=0){
+  }
+  if(txt.search('d')>=0){
     t = txt.slice(0,txt.search('d'));
     t = t * 1440;
-  } 
+  }
 
   if(isNaN(t)){
     return str;
@@ -375,8 +375,11 @@ function getTimeMinutes(str){
 }
 
 function returnTime(num){
+
   if (isNaN(num)){
     return num;
+  } else if (num === ''){
+    len = '';
   } else {
     if (num >= 1440){
       var t = num/1440;
@@ -387,12 +390,12 @@ function returnTime(num){
     } else {
       len = `${t} min`;
     }
-  } 
-
-  if (len = undefined){
-    len = "";
   }
-  
+
+  if (num === undefined){
+    len = '';
+  }
+
   return len;
 }
 
@@ -421,10 +424,32 @@ function autosize(){
   },0);
 }
 
-var catDropdown = document.getElementById('taskCat');
-catDropdown.addEventListener('change', changeDetailPage);
+addNewTask.addEventListener('click', applyNewObj);
 
-function changeDetailPage(e){
-  var cat = e.target.value;
-  
+function applyNewObj(e){
+  e.preventDefault();
+  var newEnteredTask = document.getElementById('enterNewItem');
+  var text = newEnteredTask.value;
+
+  switch(cat){
+  case 'Exercise':
+    new Exercise(text);
+    mainUsersArr[cIdx].Exercise.push(userExercise[userExercise.length-1]);
+    break;
+  case 'Meals':
+    new Meals(text);
+    mainUsersArr[cIdx].Meals.push(userMeals[userMeals.length-1]);
+    break;
+  case 'ToDo':
+    new ToDo(text);
+    mainUsersArr[cIdx].ToDo.push(userToDo[userToDo.length-1]);
+    break;
+  default:
+    break;
+  }
+  var listItem = document.createElement('li');
+  listItem.textContent = text;
+  catList.appendChild(listItem);
+
+  toLocalStorage();
 }

@@ -32,7 +32,7 @@ function Meals(name) {
 function Exercise(name) {
   this.title = name;
   this.duration = '';
-  this.typeOfExcercise = '';
+  this.description = [];
   this.reps = '';
   this.calsToBurn = '';
   userExercise.push(this);

@@ -20,12 +20,12 @@ function renderPlanner(){
   }
 
   if(mainUsersArr[cIdx].Planner.length < 1){
-   var chart =  document.getElementById('myChart');
-   chart.style.display = 'none';
-  } else {
-   chart =  document.getElementById('myChart');
-   chart.style.display = 'block';
-   chartGen(); 
+    var chart =  document.getElementById('myChart');
+    chart.style.display = 'none';
+  } else if (mainUsersArr[cIdx].Planner.length > 0){
+    chart = document.getElementById('myChart');
+    chart.style.display = 'block';
+    chartGen();
   }
 }
 
@@ -59,7 +59,7 @@ function findDaysApplied(e){
     }
   }
   toLocalStorage();
-  chartGen(); 
+  chartGen();
   applyTask.reset();
   dropDownSection.style.display = 'none';
 }
@@ -104,7 +104,7 @@ function dayDropdownList(e){
     document.getElementById('imgExercise').style.display = 'inline';
   } else if (cat === ''){
     dropDownSection.style.display = 'none';
-    showLogoImage()
+    showLogoImage();
     while(timeDropdown.childElementCount > 0) {
       timeDropdown.removeChild(timeDropdown.lastElementChild);
     }
@@ -123,7 +123,7 @@ function dayDropdownList(e){
 function showLogoImage(){
 
   var cat = taskCategory.value;
-  
+
   var ex = document.getElementById('imgExercise');
   ex.style.display = 'none';
   var ml= document.getElementById('imgMeal');
@@ -136,7 +136,7 @@ function showLogoImage(){
   switch (cat){
   case 'Meals':
     ml.style.display = 'inline';
-    break; 
+    break;
   case 'Exercise':
     ex.style.display = 'inline';
     break;
@@ -295,5 +295,3 @@ function goToDetail(e) {
   localStorage.setItem('detailItem',JSON.stringify(detailItem));
   if(cat !== 'Activity'){window.location.href = 'detailPage.html';}
 }
-
-var plannerSection = document.getElementById('weeklyDisplaySection');
